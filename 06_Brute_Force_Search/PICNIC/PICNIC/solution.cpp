@@ -1,3 +1,4 @@
+// https://algospot.com/judge/problem/read/PICNIC
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <vector>
@@ -45,8 +46,8 @@ void init() {
 }
 
 int main(int argc, char *argv[]) {
-	setbuf(stdout, NULL);
-	freopen("sample_input.txt", "r", stdin);
+	//setbuf(stdout, NULL);
+	//freopen("sample_input.txt", "r", stdin);
 
 	int T; scanf("%d", &T);
 	for (int test_case = 1; test_case <= T; test_case++) {
