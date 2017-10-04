@@ -39,24 +39,22 @@ void uncover(int type, int y, int x) {
 		int ny = y + dy;
 		int nx = x + dx;
 
-		if (ny < 0 || ny >= H || nx < 0 || nx >= W) {
-			continue;
-		}
+		if (ny < 0 || ny >= H || nx < 0 || nx >= W) continue;
+
 		map[ny][nx] += -1;
 	}
 }
 
 int solve() {
-	int y = -1, x = -1;
-	for (int i = 0; i < H; i++) {
-		for (int j = 0; j < W; j++) {
-			if (map[i][j] == 0) {
-				y = i; x = j; break;
-			}
+	int y, x;
+	for (y = 0; y < H; y++) {
+		for (x = 0; x < W; x++) {
+			if (map[y][x] == 0)
+				break;
 		}
-		if (y != -1) break;
+		if (x != W) break;
 	}
-	if (y == -1) return 1;
+	if (y == H) return 1;
 
 	int ret = 0;
 	for (int type = 0; type < 4; type++) {
@@ -68,8 +66,8 @@ int solve() {
 }
 
 int main(int argc, char *argv[]) {
-	setbuf(stdout, NULL);
-	freopen("sample_input.txt", "r", stdin);
+	//setbuf(stdout, NULL);
+	//freopen("sample_input.txt", "r", stdin);
 
 	int T; scanf("%d", &T);
 	for (int test_case = 1; test_case <= T; test_case++) {
