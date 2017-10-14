@@ -13,7 +13,6 @@ bool binary_search(int key, int first, int last) {
 	while (first <= last) {
 		mid = (first + last) / 2;
 		if (numbers[mid] == key) return true;
-
 		if (numbers[mid] > key) last = mid - 1;
 		else first = mid + 1;
 	}
@@ -21,8 +20,8 @@ bool binary_search(int key, int first, int last) {
 }
 
 int main(int argc, char *argv[]) {
-	setbuf(stdout, NULL);
-	freopen("sample_input.txt", "r", stdin);
+	//setbuf(stdout, NULL);
+	//freopen("sample_input.txt", "r", stdin);
 
 	int N; scanf("%d", &N);
 	for (int i = 0; i < N; i++) {
