@@ -87,8 +87,9 @@ int main(int argc, char *argv[]) {
 //---------------- Min Heap ---------------------//
 //-----------------------------------------------//
 void MinHeap::insert(int newKey) {
+	// Heap '모양 규칙' 보장
 	arr[++size] = newKey;
-
+	// Heap '대소 규칙' 성립
 	int child = size;
 	int parent = size / 2;
 	while (parent >= 1) {
@@ -101,9 +102,9 @@ void MinHeap::insert(int newKey) {
 
 void MinHeap::pop() {
 	if (isEmpty()) return;
-	// last --> top
+	// overwrite: end --> top
 	arr[1] = arr[size--];
-	// drop down
+	// Heap '대소 규칙' 성립
 	int curr = 1;
 	int leftChild = 2 * curr;
 	int rightChild = 2 * curr + 1;
@@ -132,8 +133,9 @@ int MinHeap::top() {
 //---------------- Max Heap ---------------------//
 //-----------------------------------------------//
 void MaxHeap::insert(int newKey) {
+	// Heap '모양 규칙' 보장
 	arr[++size] = newKey;
-
+	// Heap '대소 규칙' 성립
 	int child = size;
 	int parent = size / 2;
 	while (parent >= 1) {
@@ -146,9 +148,9 @@ void MaxHeap::insert(int newKey) {
 
 void MaxHeap::pop() {
 	if (isEmpty()) return;
-	// last --> top
+	// overwirte: end --> top
 	arr[1] = arr[size--];
-	// drop down
+	// Heap '대소 규칙' 성립
 	int curr = 1;
 	int leftChild = 2 * curr;
 	int rightChild = 2 * curr + 1;
