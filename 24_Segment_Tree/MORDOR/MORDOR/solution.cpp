@@ -29,7 +29,8 @@ struct SegmentTree {
 
 	MinMaxPair buildTree(int nodeLeft, int nodeRight, int node) {
 		if (nodeLeft == nodeRight) {
-			min[node] = max[node] = altitude[nodeLeft];
+			min[node] = altitude[nodeLeft];
+			max[node] = altitude[nodeRight];
 			return MinMaxPair(min[node], max[node]);
 		}
 
