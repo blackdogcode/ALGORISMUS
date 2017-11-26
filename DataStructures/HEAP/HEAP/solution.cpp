@@ -110,8 +110,8 @@ void MinHeap::pop() {
 	int rightChild = 2 * curr + 1;
 	while (curr <= size / 2) {
 		int minIdx = curr;
-		if (arr[leftChild] < arr[curr]) minIdx = leftChild;
-		if (arr[rightChild] < arr[minIdx]) minIdx = rightChild;
+		if (leftChild <= size && arr[leftChild] < arr[minIdx]) minIdx = leftChild;
+		if (rightChild <= size && arr[rightChild] < arr[minIdx]) minIdx = rightChild;
 
 		if (curr == minIdx) break;
 		swap(arr[curr], arr[minIdx]);
@@ -156,8 +156,8 @@ void MaxHeap::pop() {
 	int rightChild = 2 * curr + 1;
 	while (curr <= size / 2) {
 		int maxIdx = curr;
-		if (arr[leftChild] > arr[curr]) maxIdx = leftChild;
-		if (arr[rightChild] > arr[maxIdx]) maxIdx = rightChild;
+		if (leftChild <= size && arr[leftChild] > arr[maxIdx]) maxIdx = leftChild;
+		if (rightChild <= size && arr[rightChild] > arr[maxIdx]) maxIdx = rightChild;
 
 		if (curr == maxIdx) break;
 		swap(arr[curr], arr[maxIdx]);
