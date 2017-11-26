@@ -12,66 +12,53 @@ int altitude[100010];
 int Min(int a, int b) { if (a <= b) return a; else return b; }
 int Max(int a, int b) { if (a >= b) return a; else return b; }
 struct MinMaxPair {
-	int min;
-	int max;
-
 	MinMaxPair() {}
 	MinMaxPair(int _min, int _max) : min(_min), max(_max) {}
+
+	int min, max;
 };
 
 struct SegmentTree {
-	vector<int> min, max;
-	int size;
+public:
 	SegmentTree() {}
-	SegmentTree(int _size) : size(_size), min(_size * 4), max(_size * 4) {
+	SegmentTree(int _size) : size(_size), minMaxNode(_size * 4) {
 		buildTree(0, size-1, 1);
 	}
 
+	MinMaxPair findMinMax(int rangeLeft, int rangeRight) {
+		return findMinMaxInRange(rangeLeft, rangeRight, 0, size - 1, 1);
+	}
+private:
 	MinMaxPair buildTree(int nodeLeft, int nodeRight, int node) {
-		if (nodeLeft == nodeRight) {
-			min[node] = altitude[nodeLeft];
-			max[node] = altitude[nodeRight];
-			return MinMaxPair(min[node], max[node]);
-		}
+		if (nodeLeft == nodeRight)
+			return minMaxNode[node] = MinMaxPair(altitude[nodeLeft], altitude[nodeRight]);
 
 		int nodeMid = (nodeLeft + nodeRight) / 2;
-		MinMaxPair leftPair = buildTree(nodeLeft, nodeMid, node * 2);
-		MinMaxPair rightPair = buildTree(nodeMid + 1, nodeRight, node * 2 + 1);
-		min[node] = Min(leftPair.min, rightPair.min);
-		max[node] = Max(leftPair.max, rightPair.max);
+		MinMaxPair leftMinMax = buildTree(nodeLeft, nodeMid, node * 2);
+		MinMaxPair rightMinMax = buildTree(nodeMid + 1, nodeRight, node * 2 + 1);
+		int minAltitude = Min(leftMinMax.min, rightMinMax.min);
+		int maxAltitude = Max(leftMinMax.max, rightMinMax.max);
 
-		return MinMaxPair(min[node], max[node]);
+		return minMaxNode[node] = MinMaxPair(minAltitude, maxAltitude);
 	}
 
-	int findMinInRange(int rangeLeft, int rangeRight, int nodeLeft, int nodeRight, int node) {
-		if (nodeRight < rangeLeft || rangeRight < nodeLeft) return POS_INF;
+	MinMaxPair findMinMaxInRange(int rangeLeft, int rangeRight, int nodeLeft, int nodeRight, int node) {
+		if (nodeRight < rangeLeft || rangeRight < nodeLeft)
+			return MinMaxPair(POS_INF, NEG_INF);
 
-		if (rangeLeft <= nodeLeft && nodeRight <= rangeRight) return min[node];
+		if (rangeLeft <= nodeLeft && nodeRight <= rangeRight) return minMaxNode[node];
 
 		int nodeMid = (nodeLeft + nodeRight) / 2;
-		int leftMin = findMinInRange(rangeLeft, rangeRight, nodeLeft, nodeMid, node * 2);
-		int rightMin = findMinInRange(rangeLeft, rangeRight, nodeMid + 1, nodeRight, node * 2 + 1);
+		MinMaxPair leftMinMax = findMinMaxInRange(rangeLeft, rangeRight, nodeLeft, nodeMid, node * 2);
+		MinMaxPair rightMinMax = findMinMaxInRange(rangeLeft, rangeRight, nodeMid + 1, nodeRight, node * 2 + 1);
+		int minAltitude = Min(leftMinMax.min, rightMinMax.min);
+		int maxAltitude = Max(leftMinMax.max, rightMinMax.max);
 
-		return Min(leftMin, rightMin);
+		return MinMaxPair(minAltitude, maxAltitude);
 	}
-	int findMin(int rangeLeft, int rangeRight) {
-		return findMinInRange(rangeLeft, rangeRight, 0, size - 1, 1);
-	}
 
-	int findMaxInRange(int rangeLeft, int rangeRight, int nodeLeft, int nodeRight, int node) {
-		if (nodeRight < rangeLeft || rangeRight < nodeLeft) return NEG_INF;
-
-		if (rangeLeft <= nodeLeft && nodeRight <= rangeRight) return max[node];
-
-		int nodeMid = (nodeLeft + nodeRight) / 2;
-		int leftMax = findMaxInRange(rangeLeft, rangeRight, nodeLeft, nodeMid, node * 2);
-		int rightMax = findMaxInRange(rangeLeft, rangeRight, nodeMid + 1, nodeRight, node * 2 + 1);
-
-		return Max(leftMax, rightMax);
-	}
-	int findMax(int rangeLeft, int rangeRight) {
-		return findMaxInRange(rangeLeft, rangeRight, 0, size - 1, 1);
-	}
+	vector<MinMaxPair> minMaxNode;
+	int size;
 };
 
 int main(int argc, char *argv[]) {
@@ -90,8 +77,9 @@ int main(int argc, char *argv[]) {
 		int a, b;
 		for (int q = 1; q <= Q; q++) {
 			scanf("%d %d", &a, &b);
-			int maxAltitude = minMaxTree.findMax(a, b);
-			int minAltitude = minMaxTree.findMin(a, b);
+			MinMaxPair minMaxAltitude = minMaxTree.findMinMax(a, b);
+			int maxAltitude = minMaxAltitude.max;
+			int minAltitude = minMaxAltitude.min;
 			printf("%d\n", maxAltitude - minAltitude);
 		}
 	}
