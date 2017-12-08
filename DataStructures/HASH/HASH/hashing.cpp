@@ -71,7 +71,7 @@ struct HashTable {
 public:
 	HashTable() {}
 	~HashTable() {}
-	void init() { for (int i = 0; i < MAX_TABLE; i++) table[i].init(); }
+	void init() { for (register int i = 0; i < MAX_TABLE; i++) table[i].init(); }
 	unsigned long hash(char *str) {
 		unsigned long hash = 5381;
 		int c;
@@ -83,7 +83,7 @@ public:
 	Person *find(char *name)
 	{
 		unsigned long key = hash(name);
-		for (int idx = 0; idx < table[key].size(); idx++) {
+		for (register int idx = 0; idx < table[key].size(); idx++) {
 			if (strCompare(name, table[key][idx]->name) == 0)
 				return table[key][idx];
 		}
@@ -146,8 +146,8 @@ int main(int argc, char *argv[]) {
 		hashTable.init();
 		int cntPersons = 0;
 		int link; scanf("%d", &link);
-		for (int l = 0; l < link; l++) {
-			for (int i = 0; i < 2; i++) {
+		for (register int l = 0; l < link; l++) {
+			for (register int i = 0; i < 2; i++) {
 				scanf("%s", name);
 				Person *person = NULL;
 				if (person = hashTable.find(name)) {
