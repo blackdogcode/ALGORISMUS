@@ -1,75 +1,70 @@
-// https://www.acmicpc.net/problem/10828
+// https://www.acmicpc.net/problem/11403
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
-#include <cstdio>
-#include <cstring>
+#endif
+#include <stdio.h>
 
-struct Vector {
+struct Stack {
 public:
-	Vector() : length(0), capacity(100) { data = new int[capacity]; }
-	~Vector() { if (data) delete[] data; }
-
-	void push_back(int _val) {
-		if (isFull()) resize();
-		data[length++] = _val;
-	}
-	void pop_back() {
+	Stack() : size(0) {}
+	~Stack() {}
+	void init() { size = 0; }
+	void push(int val) { data[size++] = val; }
+	void pop() {
 		if (isEmpty()) return;
-		else length--;
+		--size;
 	}
-	int back() {
+	int top() {
 		if (isEmpty()) return -1;
-		else return data[length - 1];
+		return data[size - 1];
 	}
-	int front() {
-		if (isEmpty()) return -1;
-		else return data[0];
-	}
-	void resize() {
-		// copy
-		int _capacity = capacity * 2;
-		int *_data = new int[_capacity];
-		for (int i = 0; i < length; i++) _data[i] = data[i];
-		// swap
-		int *temp = data;
-		data = _data; capacity = _capacity;
-		delete[] temp;
-	}
-	int size() { return length; }
-	bool isEmpty() { return length == 0; }
-	bool isFull() { return length == capacity; }
-private:
-	int length, capacity;
-	int *data;
+	bool isEmpty() { return size == 0; }
+public:
+	int size;
+	int data[10010];
 };
+Stack stack;
+
+
+#define MAX_N 110
+int edge[MAX_N][MAX_N];
+
+int visited[MAX_N];
+void dfs(int src, int V) {
+	for (register int v = 0; v < V; ++v) visited[v] = 0;
+
+	Stack stack; stack.init();
+	for (register int next = 0; next < V; ++next) {
+		if (edge[src][next] == 1 && visited[next] == 0)
+			stack.push(next);
+	}
+	while (!stack.isEmpty()) {
+		int node = stack.top();
+		stack.pop();
+
+		visited[node] = 1;
+		for (register int next = 0; next < V; ++next) {
+			if (edge[node][next] == 1 && visited[next] == 0)
+				stack.push(next);
+		}
+	}
+}
 
 int main(int argc, char *argv[]) {
 	//freopen("sample_input.txt", "r", stdin);
-	setbuf(stdout, NULL);
-
-	Vector stack;
+	//setbuf(stdout, NULL);
 
 	int N; scanf("%d", &N);
-	for (int i = 1; i <= N; i++) {
-		char cmd[100]; scanf("%s", cmd);
-		if (strcmp(cmd, "push") == 0) {
-			int val; scanf("%d", &val);
-			stack.push_back(val);
+	for (register int from = 0; from < N; ++from)
+		for (register int to = 0; to < N; ++to)
+			scanf("%d", &edge[from][to]);
+
+	for (register int from = 0; from < N; ++from) {
+		dfs(from, N);
+		for (register int to = 0; to < N; ++to) {
+			printf("%d ", visited[to]);
 		}
-		else if (strcmp(cmd, "pop") == 0) {
-			printf("%d\n", stack.back());
-			stack.pop_back();
-		}
-		else if (strcmp(cmd, "size") == 0) {
-			printf("%d\n", stack.size());
-		}
-		else if (strcmp(cmd, "empty") == 0) {
-			if (stack.isEmpty()) printf("1\n");
-			else printf("0\n");
-		}
-		else if (strcmp(cmd, "top") == 0) {
-			printf("%d\n", stack.back());
-		}
-		else printf("INVALID COMMAND: %s\n", cmd);
+		puts("");
 	}
 	return 0;
 }
