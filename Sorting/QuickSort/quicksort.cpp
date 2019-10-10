@@ -22,21 +22,18 @@ int main(int argc, char* argv[])
 	ifstream in("input.txt", ifstream::in);
 	cin.rdbuf(in.rdbuf());
 
-	int N, *A;
-	cin >> N;
-	A = new int[N];
+	int N; cin >> N;
+	int *A = new int[N];
 
 	for (int i = 0; i < N; ++i) cin >> A[i];
 	quick_sort(A, 0, N - 1);
 	for (int i = 0; i < N; ++i) cout << A[i] << "\n";
 
-
 	delete[] A;
 	return 0;
 }
 
-void
-quick_sort(int* A, int p, int r) // A[p...r]
+void quick_sort(int* A, int p, int r) // A[p...r]
 {
 	if (p >= r) // Base Condition
 		return;
@@ -50,8 +47,7 @@ quick_sort(int* A, int p, int r) // A[p...r]
 
 // Input: A[p...r]
 // Output: i (index of pivot, A[p...i-1] <= A[q] && A[i+1...r] > A[q])
-int
-partition(int* A, int p, int r) // A[p...r]
+int partition(int* A, int p, int r) // A[p...r]
 {
 	int pivot = A[r]; // Rightest
 	int i = p - 1, j = p;
@@ -66,8 +62,7 @@ partition(int* A, int p, int r) // A[p...r]
 	return i;
 }
 
-void
-swap(int* A, int i, int j)
+void swap(int* A, int i, int j)
 {
 	int temp = A[j];
 	A[j] = A[i];
