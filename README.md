@@ -1,7 +1,8 @@
 # Competative Algorithm Sites
 [Google Code Jam](https://codingcompetitions.withgoogle.com/codejam)\
-[Algo Spot](https://algospot.com/), [Backjoon](https://www.acmicpc.net/)\
-[Top Coder Competitive Programming](https://www.topcoder.com/community/competitive-programming/), [Topcoder Practice Problem](https://arena.topcoder.com/#/u/dashboard)\
+[Algo Spot](https://algospot.com/)\
+[Backjoon](https://www.acmicpc.net/)\
+[Top Coder Competitive Programming](https://www.topcoder.com/community/competitive-programming/)\
 [Project Euler](https://projecteuler.net/about)
 
 # Divide and Conquer
