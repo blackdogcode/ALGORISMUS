@@ -7,7 +7,7 @@
 [Project Euler](https://projecteuler.net/about)
 
 # Divide and Conquer
-[Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://m.blog.naver.com/PostView.nhn?blogId=and_lamyland&logNo=221501926684&categoryNo=29&proxyReferer=https%3A%2F%2Fwww.google.com%2F)\
+[Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
 [Strassen’s Matrix Multiplication](https://www.geeksforgeeks.org/strassens-matrix-multiplication/), [Online Judge](https://practice.geeksforgeeks.org/problems/multiply-matrices/1)\
 [Easy way to remember Strassen’s Matrix Equation](https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/)
 
