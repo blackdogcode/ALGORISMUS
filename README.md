@@ -1,4 +1,4 @@
-# Competative Algorithm Sites
+# Competitive Algorithm Sites
 [Google Code Jam](https://codingcompetitions.withgoogle.com/codejam)\
 [Algo Spot](https://algospot.com/)\
 [Backjoon](https://www.acmicpc.net/)\
