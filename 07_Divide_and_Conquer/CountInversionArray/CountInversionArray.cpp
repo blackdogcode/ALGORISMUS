@@ -1,4 +1,4 @@
-// CountInversionArray.cpp 
+// O(Nlog(N) 
 // https://www.geeksforgeeks.org/counting-inversions/
 // https://practice.geeksforgeeks.org/problems/inversion-of-array/0
 
