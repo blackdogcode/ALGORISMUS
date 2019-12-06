@@ -1,5 +1,6 @@
 // Karatsuba_algorithm.cpp : O(n^log3)
 // https://en.wikipedia.org/wiki/Karatsuba_algorithm
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
