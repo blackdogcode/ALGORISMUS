@@ -13,4 +13,4 @@
 
 ![Strassen Mutlpication Formula](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Strassen_Algorithm/stressen_formula.png)
 
-[Inversion Count - Geeks for Geeks](https://www.geeksforgeeks.org/counting-inversions/), [Online Judge](https://practice.geeksforgeeks.org/problems/inversion-of-array/0)
+[Inversion Count - Geeks for Geeks](https://www.geeksforgeeks.org/counting-inversions/), [Online Judge](https://practice.geeksforgeeks.org/problems/inversion-of-array/0), [C++ Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/CountInversionArray.cpp)
