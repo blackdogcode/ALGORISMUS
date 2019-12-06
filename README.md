@@ -3,7 +3,7 @@
 [Algo Spot](https://algospot.com/)\
 [Backjoon](https://www.acmicpc.net/)\
 [Geeks for Geeks](https://practice.geeksforgeeks.org/)\
-[Top Coder Competitive Programming](https://www.topcoder.com/community/competitive-programming/)\
+[Top Coder](https://www.topcoder.com/community/competitive-programming/)\
 [Project Euler](https://projecteuler.net/about)
 
 # Divide and Conquer
