@@ -29,6 +29,5 @@ int main(int argc, char *argv[])
       cout << getInvCount(arr, size) << "\n";
       delete[] arr;
    }
-
    return 0;
 }
