@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
 
 // T(N) = 7T(N / 2) + O(N ^ 2)
 void multiply_matrix(long long** A, long long** B, long long** C, long long N) {
+   // Base Condition
    if (N == 1) return;
    if (N == 2) {
       long long p1 = A[0][0] * (B[0][1] - B[1][1]);
@@ -64,17 +65,19 @@ void multiply_matrix(long long** A, long long** B, long long** C, long long N) {
       long long p4 = A[1][1] * (B[0][1] - B[0][0]);
       long long p5 = (A[0][0] + A[1][1]) * (B[0][0] + B[1][1]);
       long long p6 = (A[0][1] - A[1][1]) * (B[0][1] + B[1][1]);
-      long long p7 = (A[0][0] - A[0][1]) * (B[0][0] + B[0][1]);
+      long long p7 = (A[0][0] - A[1][0]) * (B[0][0] + B[0][1]);
       C[0][0] = p5 + p4 - p2 + p6;
       C[0][1] = p1 + p2;
       C[1][0] = p3 + p4;
       C[1][1] = p1 + p5 - p3 - p7;
       return;
    }
+   // Divide
    long long half = N / 2;
    multiply_matrix(A, B, C, half);
    multiply_matrix(A + N, B + N, C + N, half);
    multiply_matrix(A + half, B + half, C + half, half);
    multiply_matrix(A + N + half, B + N + half, C + N + half, half);
+   // Conquer
    return;
 }
