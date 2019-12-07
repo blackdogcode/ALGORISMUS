@@ -4,7 +4,7 @@
 # Competitive Algorithm Sites
 [Google Code Jam](https://codingcompetitions.withgoogle.com/codejam),  [Algo Spot](https://algospot.com/),  [Backjoon](https://www.acmicpc.net/),  [Geeks for Geeks](https://practice.geeksforgeeks.org/),  [Top Coder](https://www.topcoder.com/community/competitive-programming/),  [Projec Euler](https://projecteuler.net/about)
 
-# Analysis of Algorithm
+# Analysis of Algorithm and Master Method
 [Analysis of Algorithms | Set 1 (Asymptotic Analysis)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-1-asymptotic-analysis/)\
 [Analysis of Algorithms | Set 2 (Worst, Average and Best Cases)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-2-asymptotic-analysis/)\
 [Analysis of Algorithms | Set 3 (Asymptotic Notations)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-3asymptotic-notations/)\
