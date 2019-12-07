@@ -14,11 +14,15 @@
 [Analysis of Algorithms | Set 2 (Worst, Average and Best Cases)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-2-asymptotic-analysis/)\
 [Analysis of Algorithms | Set 3 (Asymptotic Notations)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-3asymptotic-notations/)\
 [Analysis of Algorithms | Set 4 (Analysis of Loops)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-4-analysis-of-loops/)\
-[Analysis of Algorithm | Set 4 (Solving Recurrences)(https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/)
+[Analysis of Algorithm | Set 4 (Solving Recurrences](https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/)
+
+![Master Method](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/Master_Method.png)
 
 ![Recurrence Master Method Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/recurrence_mastermthod_analysis.png)
 
 [Analysis of Algorithm | Set 5 (Amortized Analysis Introduction)](https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/)
+
+![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/AmortizedAnalysis.png)
 
 # Divide and Conquer
 [Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
