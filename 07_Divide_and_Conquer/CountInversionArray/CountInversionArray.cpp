@@ -16,13 +16,13 @@ int main(int argc, char *argv[]) {
    if (!in.is_open()) cout << "Open Input File Failed" << endl;
    cin.rdbuf(in.rdbuf());
 
-   long long totalNumberOfInvCount = 0;
+   long long inversionCount = 0;
    int size; cin >> size;
    int* arr = new int[size];
    for (register int i = 0; i < size; ++i)
       cin >> arr[i];
-   totalNumberOfInvCount = merge_sort(arr, 0, size - 1);
-   cout << totalNumberOfInvCount; // Correct Output:2407905288
+   inversionCount = merge_sort(arr, 0, size - 1);
+   cout << inversionCount; // Correct Output:2407905288
    delete[] arr;
    return 0;
 }
