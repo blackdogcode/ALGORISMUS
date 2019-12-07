@@ -21,7 +21,7 @@
 ![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/AmortizedAnalysis.png)
 
 ## Divide and Conquer, Sorting and Searching, and Randomized Algorithms
-[Karatsuba algorithm - Wikipedia](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
+[Karatsuba algorithm - Wiki](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
 [Strassen’s Matrix Multiplication - Geeks](https://www.geeksforgeeks.org/strassens-matrix-multiplication/), [Online Judge](https://practice.geeksforgeeks.org/problems/multiply-matrices/1)\
 [Easy way to remember Strassen’s Matrix Equation - Geeks](https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/)
 
@@ -31,11 +31,11 @@
 
 ![Inversion Count Explain Graph](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/inversion_count.jpg)
 
-[Closest pair of points problem - Wikipedia](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points using Divide and Conquer algorithm - Geeks](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/)
+[Closest pair of points - Wiki](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points - Geeks](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/), [Online Judge](https://www.acmicpc.net/problem/5620)
 
 ![Close Point](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/ClosestPairOfPoint/closest_pair_of_point.png)
 
-[Quick Sort - Wikipedia](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks](https://www.geeksforgeeks.org/quick-sort/)
+[Quick Sort - Wiki](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks](https://www.geeksforgeeks.org/quick-sort/)
 
 ![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
 
