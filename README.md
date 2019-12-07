@@ -1,10 +1,10 @@
-# Mathmatics for Computer Science
+## Mathmatics for Computer Science
 [Computer_Science_Mathmatics_Princeton.pdf](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Computer_Science_Mathmatics_Princeton.pdf)
 
-# Competitive Algorithm Sites
+## Competitive Algorithm Sites
 [Google Code Jam](https://codingcompetitions.withgoogle.com/codejam),  [Algo Spot](https://algospot.com/),  [Backjoon](https://www.acmicpc.net/),  [Geeks for Geeks](https://practice.geeksforgeeks.org/),  [Top Coder](https://www.topcoder.com/community/competitive-programming/),  [Projec Euler](https://projecteuler.net/about)
 
-# Analysis of Algorithm and Master Method
+## Analysis of Algorithm and Master Method
 [Analysis of Algorithms | Set 1 (Asymptotic Analysis)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-1-asymptotic-analysis/)\
 [Analysis of Algorithms | Set 2 (Worst, Average and Best Cases)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-2-asymptotic-analysis/)\
 [Analysis of Algorithms | Set 3 (Asymptotic Notations)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-3asymptotic-notations/)\
@@ -20,7 +20,7 @@
 
 ![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/AmortizedAnalysis.png)
 
-# Divide and Conquer, Sorting and Searching, and Randomized Algorithms
+## Divide and Conquer, Sorting and Searching, and Randomized Algorithms
 [Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
 [Strassen’s Matrix Multiplication](https://www.geeksforgeeks.org/strassens-matrix-multiplication/), [Online Judge](https://practice.geeksforgeeks.org/problems/multiply-matrices/1)\
 [Easy way to remember Strassen’s Matrix Equation](https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/)
@@ -37,6 +37,6 @@
 
 [Quick Sort](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks for Geeks](https://www.geeksforgeeks.org/quick-sort/)
 
-# Graph Search, Shortest Paths, and Data Structures
+## Graph Search, Shortest Paths, and Data Structures
 
-# Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
+## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
