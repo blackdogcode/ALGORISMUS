@@ -20,7 +20,7 @@
 
 ![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/AmortizedAnalysis.png)
 
-# Divide and Conquer
+# Divide and Conquer, Sorting and Searching, and Randomized Algorithms
 [Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
 [Strassen’s Matrix Multiplication](https://www.geeksforgeeks.org/strassens-matrix-multiplication/), [Online Judge](https://practice.geeksforgeeks.org/problems/multiply-matrices/1)\
 [Easy way to remember Strassen’s Matrix Equation](https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/)
@@ -34,3 +34,7 @@
 [Closest pair of points problem](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points using Divide and Conquer algorithm](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/)
 
 ![Close Point](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/ClosestPairOfPoint/closest_pair_of_point.png)
+
+# Graph Search, Shortest Paths, and Data Structures
+
+# Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
