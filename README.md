@@ -21,21 +21,21 @@
 ![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/AmortizedAnalysis.png)
 
 ## Divide and Conquer, Sorting and Searching, and Randomized Algorithms
-[Karatsuba algorithm](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
-[Strassen’s Matrix Multiplication](https://www.geeksforgeeks.org/strassens-matrix-multiplication/), [Online Judge](https://practice.geeksforgeeks.org/problems/multiply-matrices/1)\
-[Easy way to remember Strassen’s Matrix Equation](https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/)
+[Karatsuba algorithm - Wikipedia](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
+[Strassen’s Matrix Multiplication - Geeks](https://www.geeksforgeeks.org/strassens-matrix-multiplication/), [Online Judge](https://practice.geeksforgeeks.org/problems/multiply-matrices/1)\
+[Easy way to remember Strassen’s Matrix Equation - Geeks](https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/)
 
 ![Strassen Mutlpication Formula](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Strassen_Algorithm/stressen_formula.png)
 
-[Inversion Count - Geeks for Geeks](https://www.geeksforgeeks.org/counting-inversions/), [Online Judge](https://practice.geeksforgeeks.org/problems/inversion-of-array/0), [C++ Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/CountInversionArray.cpp)
+[Inversion Count - Geeks](https://www.geeksforgeeks.org/counting-inversions/), [C++ Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/CountInversionArray.cpp)
 
 ![Inversion Count Explain Graph](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/inversion_count.jpg)
 
-[Closest pair of points problem](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points using Divide and Conquer algorithm](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/)
+[Closest pair of points problem - Wikipedia](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points using Divide and Conquer algorithm - Geeks](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/)
 
 ![Close Point](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/ClosestPairOfPoint/closest_pair_of_point.png)
 
-[Quick Sort](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks for Geeks](https://www.geeksforgeeks.org/quick-sort/)
+[Quick Sort - Wikipedia](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks](https://www.geeksforgeeks.org/quick-sort/)
 
 ![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
 
