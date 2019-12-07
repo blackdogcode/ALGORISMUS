@@ -1,46 +1,29 @@
-// O(Nlog(N) 
+// Count the number of Inversion in Array using Merge Sort: O(Nlog(N) 
 // https://www.geeksforgeeks.org/counting-inversions/
-// https://practice.geeksforgeeks.org/problems/inversion-of-array/0
-
 #include <iostream>
 #include <fstream>
 #include <cmath>
 
-#define INF 123456789
-
 using namespace std;
 
 long long merge_sort(int *arr, int p, int r);
-long long merge(int *arr, int p, int q, int r, int s);
-void swap(int& lhs, int& rhs) {
-   int tmp = lhs;
-   lhs = rhs; rhs = tmp;
-}
+long long merge(int*arr, int p, int q, int r, int s);
 
 int main(int argc, char *argv[]) {
    cout.sync_with_stdio(false);
 
-   ifstream in("IntegerArray.txt", ifstream::in);
+   ifstream in("input.txt", ifstream::in);
    if (!in.is_open()) cout << "Open Input File Failed" << endl;
    cin.rdbuf(in.rdbuf());
-   ofstream out("output.txt", ofstream::out);
 
-   int test_case; cin >> test_case;
-   for (register int i = 0; i < 1; ++i) {
-      int val; cin >> val;
-      int size = 1, tmp = val;
-      while (tmp / 10 != 0) {
-         tmp /= 10; ++size;
-      }
-      int* arr = new int[size];
-      for (register int j = size - 1; j >= 0; --j) {
-         arr[j] = val % 10;
-         val /= 10;
-      }
-      out << merge_sort(arr, 0, size - 1);
-      delete[] arr;
-   }
-
+   long long totalNumberOfInvCount = 0;
+   int size; cin >> size;
+   int* arr = new int[size];
+   for (register int i = 0; i < size; ++i)
+      cin >> arr[i];
+   totalNumberOfInvCount = merge_sort(arr, 0, size - 1);
+   cout << totalNumberOfInvCount; // Correct Output:2407905288
+   delete[] arr;
    return 0;
 }
 
@@ -62,21 +45,21 @@ long long merge(int *arr, int p, int q, int r, int s) {
    int *rhs = new int[s - r + 2];
    for (i = 0; i <= q - p; ++i) 
       lhs[i] = arr[p + i];
-   lhs[i] = INF;
+   lhs[i] = INT_MAX;
    for (j = 0; j <= s - r; ++j) 
       rhs[j] = arr[r + j];
-   rhs[j] = INF;
+   rhs[j] = INT_MAX;
 
    long long inversion_count = 0; i = j = 0;
    for (register int k = p; k <= s; ++k) {
       if (lhs[i] <= rhs[j]) {
          arr[k] = lhs[i++];
-         ++p;
+         p++;
       }
       else {
          arr[k] = rhs[j++];
          // Core Part!
-         if (lhs[i] != INF) 
+         if (lhs[i] != INT_MAX)  
             inversion_count += r - p;
       }
    }
