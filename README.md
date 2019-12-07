@@ -2,12 +2,9 @@
 [Computer_Science_Mathmatics_Princeton.pdf](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Computer_Science_Mathmatics_Princeton.pdf)
 
 # Competitive Algorithm Sites
-[Google Code Jam](https://codingcompetitions.withgoogle.com/codejam)\
-[Algo Spot](https://algospot.com/)\
-[Backjoon](https://www.acmicpc.net/)\
-[Geeks for Geeks](https://practice.geeksforgeeks.org/)\
-[Top Coder](https://www.topcoder.com/community/competitive-programming/)\
-[Project Euler](https://projecteuler.net/about)
+[Google Code Jam](https://codingcompetitions.withgoogle.com/codejam), [Algo Spot](https://algospot.com/)\
+[Backjoon](https://www.acmicpc.net/), [Geeks for Geeks](https://practice.geeksforgeeks.org/)\
+[Top Coder](https://www.topcoder.com/community/competitive-programming/), [Project Euler](https://projecteuler.net/about)
 
 # Analysis of Algorithm
 [Analysis of Algorithms | Set 1 (Asymptotic Analysis)](https://www.geeksforgeeks.org/analysis-of-algorithms-set-1-asymptotic-analysis/)\
