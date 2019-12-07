@@ -37,6 +37,8 @@
 
 [Quick Sort](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks for Geeks](https://www.geeksforgeeks.org/quick-sort/)
 
+![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
+
 ## Graph Search, Shortest Paths, and Data Structures
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
