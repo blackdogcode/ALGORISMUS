@@ -1,3 +1,6 @@
+# Mathmatics for Computer Science
+[Computer_Science_Mathmatics_Princeton.pdf](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Computer_Science_Mathmatics_Princeton.pdf)
+
 # Competitive Algorithm Sites
 [Google Code Jam](https://codingcompetitions.withgoogle.com/codejam)\
 [Algo Spot](https://algospot.com/)\
