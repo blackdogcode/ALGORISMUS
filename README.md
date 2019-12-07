@@ -33,4 +33,4 @@
 
 [Closest pair of points problem](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points using Divide and Conquer algorithm](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/)
 
-
+![Close Point](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/ClosestPairOfPoint/closest_pair_of_point.png)
