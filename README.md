@@ -18,3 +18,5 @@
 ![Inversion Count Explain Graph](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/inversion_count.jpg)
 
 [Master Method](https://en.wikipedia.org/wiki/Master_theorem_(analysis_of_algorithms)), [Geeks for Geeks](https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/)
+
+![Recurrence Master Method Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/recurrence_mastermthod_analysis.png)
