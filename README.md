@@ -41,7 +41,7 @@
 
 [Continuous and discrete probability distributions](https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/probability-distributions/supporting-topics/basics/continuous-and-discrete-probability-distributions/)
 
-![Continuous Distribution](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/continuous_probablity_distribution.png), ![Discrete Dsitrubtion](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/discrete_probablity_distribution.png)
+![Discrete Dsitrubtion](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/discrete_probablity_distribution.png)
 
 ## Graph Search, Shortest Paths, and Data Structures
 
