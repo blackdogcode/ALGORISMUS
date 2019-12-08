@@ -39,6 +39,8 @@
 
 ![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
 
+[Continuous and discrete probability distributions](https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/probability-distributions/supporting-topics/basics/continuous-and-discrete-probability-distributions/)
+
 ## Graph Search, Shortest Paths, and Data Structures
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
