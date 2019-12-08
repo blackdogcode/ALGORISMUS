@@ -43,6 +43,8 @@
 
 ![Discrete Dsitrubtion](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/discrete_probablity_distribution.png)
 
+![expectation_probability_Pivot](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/expectation_probability_Pivot.png)
+
 ## Graph Search, Shortest Paths, and Data Structures
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
