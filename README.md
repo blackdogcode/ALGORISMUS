@@ -39,6 +39,7 @@
 
 ![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
 
+## Probability
 [Continuous and discrete probability distributions](https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/probability-distributions/supporting-topics/basics/continuous-and-discrete-probability-distributions/)
 
 ![Discrete Dsitrubtion](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/discrete_probablity_distribution.png)
