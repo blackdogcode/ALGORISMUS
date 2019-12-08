@@ -35,7 +35,7 @@
 
 ![Close Point](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/ClosestPairOfPoint/closest_pair_of_point.png)
 
-[Quick Sort - Wiki](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks](https://www.geeksforgeeks.org/quick-sort/)
+[Quick Sort - Wiki](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks](https://www.geeksforgeeks.org/quick-sort/). [QuickSort using Random Pivoting](https://www.geeksforgeeks.org/quicksort-using-random-pivoting/)
 
 ![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
 
