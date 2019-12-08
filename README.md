@@ -46,6 +46,8 @@
 
 ![expectation_probability_Pivot](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/expectation_probability_Pivot.png)
 
+[Why is the expected value E(X2)≠E(X)2?](https://math.stackexchange.com/questions/149723/why-is-the-expected-value-ex2-neq-ex2)
+
 ## Graph Search, Shortest Paths, and Data Structures
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
