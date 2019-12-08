@@ -39,12 +39,15 @@
 
 ![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
 
-## Probability
 [Continuous and discrete probability distributions](https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/probability-distributions/supporting-topics/basics/continuous-and-discrete-probability-distributions/)
 
 ![Discrete Dsitrubtion](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/discrete_probablity_distribution.png)
 
 ![expectation_probability_Pivot](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/expectation_probability_Pivot.png)
+
+[Probabilty based on quicksort partition - 0 < a < 0.5](https://stackoverflow.com/questions/25477735/probabilty-based-on-quicksort-partition)\
+[Birthday problem among k people](https://math.stackexchange.com/questions/2140681/birthday-problem-among-k-people)\
+[Why is the expected value E(X2)≠E(X)2?](https://math.stackexchange.com/questions/149723/why-is-the-expected-value-ex2-neq-ex2)
 
 ## Graph Search, Shortest Paths, and Data Structures
 
