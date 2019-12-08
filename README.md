@@ -43,6 +43,8 @@
 
 ![Discrete Dsitrubtion](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/discrete_probablity_distribution.png)
 
+![Linearlity of Expectation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/linearity_of_expectation.png)
+
 ![expectation_probability_Pivot](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/expectation_probability_Pivot.png)
 
 [Probabilty based on quicksort partition - 0 < a < 0.5](https://stackoverflow.com/questions/25477735/probabilty-based-on-quicksort-partition)\
