@@ -13,13 +13,13 @@
 [Analysis of Algorithm | Set 4 (Solving Recurrences](https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/)
 [RSP(rate of subproblem proliferation) and RWS(rate of work shrinkage)](http://mlwiki.org/index.php/Divide_and_Conquer)
 
-![Master Method](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/Master_Method.png)
+![Master Method](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture_Divide_and_Conquer/Reference/Master_Method.png)
 
-![Recurrence Master Method Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/recurrence_mastermthod_analysis.png)
+![Recurrence Master Method Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture_Divide_and_Conquer/Reference/recurrence_mastermthod_analysis.png)
 
 [Analysis of Algorithm | Set 5 (Amortized Analysis Introduction)](https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/)
 
-![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/AmortizedAnalysis.png)
+![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture_Divide_and_Conquer/Reference/AmortizedAnalysis.png)
 
 ## Divide and Conquer, Sorting and Searching, and Randomized Algorithms
 [Karatsuba algorithm - Wiki](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
