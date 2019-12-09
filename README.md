@@ -51,6 +51,18 @@
 
 [Order statistic - wiki](https://en.wikipedia.org/wiki/Order_statistic), [Median of medians - wiki](https://en.wikipedia.org/wiki/Median_of_medians), [Quick Select - Wiki](https://en.wikipedia.org/wiki/Quickselect)
 
+![Reduce to Sorting](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Reduction_to_Sorting.png)
+
+![Randomized Selection](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Randomized_Selection.png)
+
+<b>Karger's algorithm</b>
+[Karger's algorithm - wiki](https://en.wikipedia.org/wiki/Karger%27s_algorithm)\
+[Karger’s algorithm for Minimum Cut | Set 1 (Introduction and Implementation)](https://www.geeksforgeeks.org/kargers-algorithm-for-minimum-cut-set-1-introduction-and-implementation/)\
+[Karger’s algorithm for Minimum Cut | Set 2 (Analysis and Applications)](https://www.geeksforgeeks.org/kargers-algorithm-for-minimum-cut-set-2-analysis-and-applications/)\
+
+![Min-Cut](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/min_cut_graph.png)
+
+
 ## Graph Search, Shortest Paths, and Data Structures
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
