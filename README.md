@@ -49,6 +49,8 @@
 [Birthday problem among k people](https://math.stackexchange.com/questions/2140681/birthday-problem-among-k-people)\
 [Why is the expected value E(X2)≠E(X)2?](https://math.stackexchange.com/questions/149723/why-is-the-expected-value-ex2-neq-ex2)
 
+[Order statistic - wiki](https://en.wikipedia.org/wiki/Order_statistic)
+
 ## Graph Search, Shortest Paths, and Data Structures
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
