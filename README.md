@@ -55,7 +55,7 @@
 
 ![Randomized Selection](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Randomized_Selection.png)
 
-<b>Karger's algorithm</b>\
+<b>[Karger's algorithm]</b>\
 [Karger's algorithm - wiki](https://en.wikipedia.org/wiki/Karger%27s_algorithm)\
 [Karger’s algorithm for Minimum Cut | Set 1 (Introduction and Implementation)](https://www.geeksforgeeks.org/kargers-algorithm-for-minimum-cut-set-1-introduction-and-implementation/)\
 [Karger’s algorithm for Minimum Cut | Set 2 (Analysis and Applications)](https://www.geeksforgeeks.org/kargers-algorithm-for-minimum-cut-set-2-analysis-and-applications/)\
