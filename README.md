@@ -49,7 +49,7 @@
 [Birthday problem among k people](https://math.stackexchange.com/questions/2140681/birthday-problem-among-k-people)\
 [Why is the expected value E(X2)≠E(X)2?](https://math.stackexchange.com/questions/149723/why-is-the-expected-value-ex2-neq-ex2)
 
-[Order statistic - wiki](https://en.wikipedia.org/wiki/Order_statistic), [Median of medians - wiki](https://en.wikipedia.org/wiki/Median_of_medians), [Quick Select - Wiki](https://en.wikipedia.org/wiki/Quickselect)
+[Order statistic](https://en.wikipedia.org/wiki/Order_statistic), [Median of medians](https://en.wikipedia.org/wiki/Median_of_medians), [Quick Select](https://en.wikipedia.org/wiki/Quickselect)
 
 ![Reduce to Sorting](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Reduction_to_Sorting.png)
 
