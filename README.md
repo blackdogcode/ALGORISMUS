@@ -1,5 +1,6 @@
 ## Mathmatics for Computer Science
-[Computer_Science_Mathmatics_Princeton.pdf](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Computer_Science_Mathmatics_Princeton.pdf)
+[Computer_Science_Mathmatics_Princeton.pdf](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Computer_Science_Mathmatics_Princeton.pdf)\
+[Andrew's Algorithm Exercise Solutions](http://andrew-exercise.blogspot.com/)
 
 ## Competitive Algorithm Sites
 [Google Code Jam](https://codingcompetitions.withgoogle.com/codejam),  [Algo Spot](https://algospot.com/),  [Backjoon](https://www.acmicpc.net/),  [Geeks for Geeks](https://practice.geeksforgeeks.org/),  [Top Coder](https://www.topcoder.com/community/competitive-programming/),  [Projec Euler](https://projecteuler.net/about)
