@@ -70,6 +70,8 @@
 
 [DFS - Wiki](https://en.wikipedia.org/wiki/Depth-first_search), [DFS - Geeks](https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/), [Online Judge](https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1)
 
+[Topological Sorting - Wiki](https://en.wikipedia.org/wiki/Topological_sorting), [Topological Sorting - Geeks](https://www.geeksforgeeks.org/topological-sorting/), [Online Judge](https://en.wikipedia.org/wiki/Topological_sorting)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
