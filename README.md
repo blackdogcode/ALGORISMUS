@@ -66,6 +66,8 @@
 
 ## Graph Search, Shortest Paths, and Data Structures
 
+[BFS - Wiki](https://en.wikipedia.org/wiki/Breadth-first_search), [BFS - Geeks](https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/), [Online Judge](https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
