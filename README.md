@@ -66,7 +66,7 @@
 
 ## Graph Search, Shortest Paths, and Data Structures
 
-[BFS - Wiki](https://en.wikipedia.org/wiki/Breadth-first_search), [BFS - Geeks](https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/), [Online Judge](https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1)\
+[BFS - Wiki](https://en.wikipedia.org/wiki/Breadth-first_search), [BFS - Geeks](https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/), [Online Judge](https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1)
 
 [DFS - Wiki](https://en.wikipedia.org/wiki/Depth-first_search), [DFS - Geeks](https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/), [Online Judge](https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1)
 
