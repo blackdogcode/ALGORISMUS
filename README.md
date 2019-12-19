@@ -72,7 +72,7 @@
 
 [Topological Sorting - Wiki](https://en.wikipedia.org/wiki/Topological_sorting), [Topological Sorting - Geeks](https://www.geeksforgeeks.org/topological-sorting/), [Online Judge](https://en.wikipedia.org/wiki/Topological_sorting)
 
-[SCC - strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component), [Geeks for Geeks SCC](https://www.geeksforgeeks.org/strongly-connected-components/)
+[SCC - strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component), [Tarjan’s Algorithm to find Strongly Connected Components](https://www.geeksforgeeks.org/strongly-connected-components/)
 
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
