@@ -72,6 +72,8 @@
 
 [Topological Sorting - Wiki](https://en.wikipedia.org/wiki/Topological_sorting), [Topological Sorting - Geeks](https://www.geeksforgeeks.org/topological-sorting/), [Online Judge](https://en.wikipedia.org/wiki/Topological_sorting)
 
+[SCC - strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component), [Geeks for Geeks SCC](https://www.geeksforgeeks.org/strongly-connected-components/)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
