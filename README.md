@@ -74,6 +74,8 @@
 
 [SCC - strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component), [Tarjan’s Algorithm to find Strongly Connected Components](https://www.geeksforgeeks.org/strongly-connected-components/)
 
+[Dijkstra's algorithm - wiki](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm), [Geeks for Geeks](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/), [Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/30_Shortest_Path_Problem/Dijesktra/Dijesktra.cpp)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
