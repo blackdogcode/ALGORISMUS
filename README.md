@@ -78,8 +78,13 @@
 
 [Self-balancing binary search tree](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree), [Convert a normal BST to Balanced BST](https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/)
 
-[AVL Tree](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)\
+[AVL Tree](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)
+
+![AVL Tree Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/AVL_Tree_Example.gif)
+
 [Red-Black Tree](https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/)
+
+![Red-Black Tree Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Red-black_tree_example.png)
 
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
