@@ -38,8 +38,6 @@
 
 [Quick Sort - Wiki](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks](https://www.geeksforgeeks.org/quick-sort/). [QuickSort using Random Pivoting](https://www.geeksforgeeks.org/quicksort-using-random-pivoting/)
 
-![Quick Sort Animzation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/Sorting_quicksort_anim.gif)
-
 [Continuous and discrete probability distributions](https://support.minitab.com/en-us/minitab-express/1/help-and-how-to/basic-statistics/probability-distributions/supporting-topics/basics/continuous-and-discrete-probability-distributions/)
 
 ![Linearlity of Expectation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/linearity_of_expectation.png)
