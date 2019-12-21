@@ -74,6 +74,10 @@
 
 [Dijkstra's algorithm - wiki](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm), [Geeks for Geeks](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/), [Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/30_Shortest_Path_Problem/Dijesktra/Dijesktra.cpp)
 
+[Heap Sort - wiki](https://en.wikipedia.org/wiki/Heapsort), [Heap Sorting - Geeks](https://www.geeksforgeeks.org/heap-sort/)
+
+[Self-balancing binary search tree](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree), [Convert a normal BST to Balanced BST](https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
