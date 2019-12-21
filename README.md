@@ -30,7 +30,7 @@
 
 [Inversion Count - Geeks](https://www.geeksforgeeks.org/counting-inversions/), [C++ Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/CountInversionArray.cpp)
 
-![Inversion Count Explain Graph](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/inversion_count.jpg)
+![Inversion Count Explain Graph](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Assignment\1_Divide_and_Conquer_Sorting_and_Searching_and_Randomized_Algorithms\Week2_CountInversionArray\CountInversionArray/inversion_count.jpg)
 
 [Closest pair of points - Wiki](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points - Geeks](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/), [Online Judge](https://www.acmicpc.net/problem/5620)
 
