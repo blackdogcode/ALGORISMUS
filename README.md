@@ -42,7 +42,7 @@
 
 ![Linearlity of Expectation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/linearity_of_expectation.png)
 
-![expectation_probability_Pivot](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/QuickSort/expectation_probability_Pivot.png)
+![expectation_probability_Pivot](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Assignment/1_Divide_and_Conquer_Sorting_and_Searching_and_Randomized_Algorithms/Week3_QuickSort/QuickSort/expectation_probability_Pivot.png)
 
 [Probabilty based on quicksort partition - 0 < a < 0.5](https://stackoverflow.com/questions/25477735/probabilty-based-on-quicksort-partition)\
 [Birthday problem among k people](https://math.stackexchange.com/questions/2140681/birthday-problem-among-k-people)\
