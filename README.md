@@ -78,6 +78,9 @@
 
 [Self-balancing binary search tree](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree), [Convert a normal BST to Balanced BST](https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/)
 
+[AVL Tree](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)\
+[Red-Black Tree](https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
