@@ -111,6 +111,8 @@
 
 ![Bucket Size](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Hasing_Beset_Bucket_Size.png)
 
+[What are Hash Functions and How to choose a good Hash Function?](https://www.geeksforgeeks.org/what-are-hash-functions-and-how-to-choose-a-good-hash-function/)
+
 [Bloom Filter](https://en.wikipedia.org/wiki/Bloom_filter), [Bloom Filter - Geeks](https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/)
 
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
