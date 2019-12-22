@@ -115,6 +115,8 @@
 
 [Bloom Filter](https://en.wikipedia.org/wiki/Bloom_filter), [Bloom Filter - Geeks](https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/)
 
+![Bloom Filter Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Bloom_filter.png)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
