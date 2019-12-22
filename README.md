@@ -20,6 +20,7 @@
 [Analysis of Algorithm | Set 5 (Amortized Analysis Introduction)](https://www.geeksforgeeks.org/analysis-algorithm-set-5-amortized-analysis-introduction/)
 
 ![Amortized Analysis](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Lecture/Reference/AmortizedAnalysis.png)
+<hr>
 
 ## Divide and Conquer, Sorting and Searching, and Randomized Algorithms
 [Karatsuba algorithm - Wiki](https://en.wikipedia.org/wiki/Karatsuba_algorithm), [C++ Implemntation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Karatsuba_algorithm/Karatsuba_algorithm.cpp)\
@@ -27,14 +28,17 @@
 [Easy way to remember Strassen’s Matrix Equation - Geeks](https://www.geeksforgeeks.org/easy-way-remember-strassens-matrix-equation/)
 
 ![Strassen Mutlpication Formula](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/Strassen_Algorithm/stressen_formula.png)
+<hr>
 
 [Inversion Count - Geeks](https://www.geeksforgeeks.org/counting-inversions/), [C++ Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/CountInversionArray/CountInversionArray.cpp)
 
 ![Inversion Count Explain Graph](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Stanford_Algorithm_Assignment/1_Divide_and_Conquer_Sorting_and_Searching_and_Randomized_Algorithms/Week2_CountInversionArray/CountInversionArray/inversion_count.jpg)
+<hr>
 
 [Closest pair of points - Wiki](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem), [Closest Pair of Points - Geeks](https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/), [Online Judge](https://www.acmicpc.net/problem/5620)
 
 ![Close Point](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/07_Divide_and_Conquer/ClosestPairOfPoint/closest_pair_of_point.png)
+<hr>
 
 [Quick Sort - Wiki](https://en.wikipedia.org/wiki/Quicksort), [Quick Sort - Geeks](https://www.geeksforgeeks.org/quick-sort/). [QuickSort using Random Pivoting](https://www.geeksforgeeks.org/quicksort-using-random-pivoting/)
 
@@ -53,6 +57,7 @@
 ![Reduce to Sorting](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Reduction_to_Sorting.png)
 
 ![Randomized Selection](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Randomized_Selection.png)
+<hr>
 
 <b>[Karger's algorithm]</b>\
 [Karger's algorithm - wiki](https://en.wikipedia.org/wiki/Karger%27s_algorithm)\
