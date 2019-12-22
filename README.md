@@ -109,6 +109,8 @@
 
 ![djb2 Hashing](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/djb2_hashing_function.png)
 
+![Bucket Size](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Hasing_Beset_Bucket_Size.png)
+
 [Bloom Filter](https://en.wikipedia.org/wiki/Bloom_filter), [Bloom Filter - Geeks](https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/)
 
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
