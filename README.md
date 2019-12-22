@@ -82,9 +82,9 @@
 
 ![splay_tree_zigzag](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/splay_tree_zigzag.gif)
 
-[AVL-tree-wBalance_K](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)
+[AVL Tree](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)
 
-!(https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/AVL-tree-wBalance_K.png)
+![AVL-tree-wBalance_K](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/AVL-tree-wBalance_K.png)
 
 [Red-Black Tree](https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/)
 
