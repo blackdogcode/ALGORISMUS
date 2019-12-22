@@ -92,6 +92,8 @@
 
 [B+ Tree](https://www.geeksforgeeks.org/introduction-of-b-tree/)
 
+![B+ Tree Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/B_plus_tree.jpg)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
