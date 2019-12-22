@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{D7DB4938-1AC0-4B2B-AE06-FEEBDBD1BD62}</ProjectGuid>
+    <ProjectGuid>{1F254887-9D44-48AD-8703-B63764D4A6A8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My2SUM</RootNamespace>
+    <RootNamespace>My2Sum</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,7 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="2SUM.cpp" />
+    <ClCompile Include="2Sum.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
