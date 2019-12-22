@@ -86,6 +86,8 @@
 
 ![Red-Black Tree Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Red-black_tree_example.png)
 
+[Splay Tree](https://www.geeksforgeeks.org/splay-tree-set-1-insert/), [B Tree](https://www.geeksforgeeks.org/introduction-of-b-tree-2/), [B+ Tree](https://www.geeksforgeeks.org/introduction-of-b-tree/)
+
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
 ## Shortest Paths Revisited, NP-Complete Problems and What To Do About Them
