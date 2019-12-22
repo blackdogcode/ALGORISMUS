@@ -107,6 +107,8 @@
 ### Hasing
 [Hash Table](https://en.wikipedia.org/wiki/Hash_table), [Hashing - Geeeks](https://www.geeksforgeeks.org/hashing-set-1-introduction/), [Hashing Function](http://www.cse.yorku.ca/~oz/hash.html), [Universal Hasing](https://en.wikipedia.org/wiki/Universal_hashing)
 
+![djb2 Hashing](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/djb2_hashing_function.png)
+
 [Bloom Filter](https://en.wikipedia.org/wiki/Bloom_filter), [Bloom Filter - Geeks](https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/)
 
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
