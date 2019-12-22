@@ -90,6 +90,8 @@
 
 ![Red-Black Tree Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Red-black_tree_example.png)
 
+![Red-Black Tree 4 Invaraints](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Red-Black-Tree-Four-Invariants.png)
+
 [B+ Tree](https://www.geeksforgeeks.org/introduction-of-b-tree/)
 
 ![B+ Tree Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/B_plus_tree.jpg)
