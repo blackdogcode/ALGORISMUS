@@ -73,7 +73,9 @@
 [SCC - strongly connected components](https://en.wikipedia.org/wiki/Strongly_connected_component), [Tarjan’s Algorithm to find Strongly Connected Components](https://www.geeksforgeeks.org/strongly-connected-components/)
 
 [Dijkstra's algorithm - wiki](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm), [Geeks for Geeks](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/), [Implementation](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/30_Shortest_Path_Problem/Dijesktra/Dijesktra.cpp)
+<hr>
 
+### Heap and Blanced Binary Search Tree
 [Heap Sort - wiki](https://en.wikipedia.org/wiki/Heapsort), [Heap Sorting - Geeks](https://www.geeksforgeeks.org/heap-sort/)
 
 [Self-balancing binary search tree](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree), [Convert a normal BST to Balanced BST](https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/)
@@ -95,6 +97,12 @@
 [B+ Tree](https://www.geeksforgeeks.org/introduction-of-b-tree/)
 
 ![B+ Tree Example](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/B_plus_tree.jpg)
+<hr>
+
+### Hasing
+[Hash Table](https://en.wikipedia.org/wiki/Hash_table), [Hashing - Geeeks](https://www.geeksforgeeks.org/hashing-set-1-introduction/),[Universal Hasing](https://en.wikipedia.org/wiki/Universal_hashing)\
+
+[Bloom Filter](https://en.wikipedia.org/wiki/Bloom_filter), [Bloom Filter - Geeks](https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/)
 
 ## Greedy Algorithms, Minimum Spanning Trees, and Dynamic Programming
 
