@@ -78,7 +78,13 @@
 
 [Self-balancing binary search tree](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree), [Convert a normal BST to Balanced BST](https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/)
 
-[Splay Tree](https://www.geeksforgeeks.org/splay-tree-set-1-insert/), [AVL Tree](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)
+[Splay Tree](https://www.geeksforgeeks.org/splay-tree-set-1-insert/)
+
+![splay_tree_zigzag](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/splay_tree_zigzag.gif)
+
+[AVL-tree-wBalance_K](https://www.geeksforgeeks.org/avl-tree-set-1-insertion/)
+
+!(https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/AVL-tree-wBalance_K.png)
 
 [Red-Black Tree](https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/)
 
