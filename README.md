@@ -110,6 +110,7 @@
 ![djb2 Hashing](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/djb2_hashing_function.png)
 
 ![Bucket Size](https://github.com/Blackdog-Programmer/ALGORITHMUS/blob/master/Reference/Hasing_Beset_Bucket_Size.png)
+[good hash table primes](https://planetmath.org/goodhashtableprimes)
 
 [What are Hash Functions and How to choose a good Hash Function?](https://www.geeksforgeeks.org/what-are-hash-functions-and-how-to-choose-a-good-hash-function/)
 
