@@ -80,7 +80,7 @@ void gen_my_lotto(int* my_lotto) {
 		printf("\t[%d] 로또 번호 입력 : ", i + 1);
 		int num; scanf("%d", &num);
 		if (num <= 0 || num > 45) {
-			printf("1-45 사이의 번호를 입력해주십시오");
+			printf("1-45 사이의 번호를 입력해주십시오\n");
 			continue;
 		}
 		duplicated = 0;
@@ -133,7 +133,7 @@ void print_result(int* my_lotto, int* lotto, int result, FILE* fid) {
 	for (int i = 0; i < CNT_LOTTO; ++i) fprintf(fid, "%d ", my_lotto[i]);
 	fprintf(fid, "\n");
 	fprintf(fid, "    당첨번호 갯수  : %d\n", chk);
-	fprintf(fid, "    당첨된 번호   : ");
+	fprintf(fid, "    당첨된 번호    : ");
 	if (chk == 0) { fprintf(fid, "없음"); }
 	else {
 		for (int i = 0; i < CNT_LOTTO; ++i) {
