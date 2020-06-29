@@ -43,7 +43,6 @@ int main(int argc, char* argv[])
 
 	srand(time(NULL));
 	do {
-		// init
 		for (int i = 0; i < CNT_LOTTO; ++i) true_array[i] = 0;
 		gen_lotto(lotto);
 		fprintf(fid, "[game #%d] ====================================\n", game_cnt);
@@ -162,8 +161,4 @@ void current_time() {
 	printf("=================================================\n");
 	printf("프로그램 시작 : %s", buf);
 	printf("=================================================\n");
-}
-
-void reset_array(int* correct_lotto) {
-	for (int i = 0; i < CNT_LOTTO; ++i) correct_lotto = 0;
 }
