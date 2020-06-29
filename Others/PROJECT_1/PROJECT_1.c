@@ -17,36 +17,43 @@ int true_array[CNT_LOTTO];
 void gen_lotto(int* lotto);
 void gen_my_lotto(int* my_lotto);
 int check_lotto(int* lotto, int* my_lotto);
-void print_result(int* lotto, int* my_lotto, int result);
+void print_result(int* lotto, int* my_lotto, int result, FILE* fid);
 
 // helper fucntion
 void current_time();
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-	current_time();
-	srand(time(NULL));
-
+	FILE* fid;
+	if ((fid = fopen("result.txt", "w")) == NULL) {
+		printf("파일이 열리지 않습니다.\n"); exit(1);
+	}
+	current_time(fid);
+	
 	int* my_lotto = (int*)malloc((CNT_LOTTO) * sizeof(int));
 	gen_my_lotto(my_lotto);
 
 	int* lotto = (int*)malloc((CNT_LOTTO + 1) * sizeof(int));
 	int goal; printf("목표 등수를 정하시오 [1-5] : "); scanf("%d", &goal);
+
+	srand(time(NULL));
 	do {
 		// init
 		for (int i = 0; i < CNT_LOTTO; ++i) true_array[i] = 0;
 		gen_lotto(lotto);
-		printf("[game #%d] ====================================\n", game_cnt);
+		fprintf(fid, "[game #%d] ====================================\n", game_cnt);
 		int result = check_lotto(my_lotto, lotto);
-		print_result(my_lotto, lotto, result);
+		print_result(my_lotto, lotto, result, fid);
 		if (result == goal) break;
 		++game_cnt;
 	} while (1);
 
-	printf("\n\n");
-	printf("=================================================\n");
-	printf("종료, 1 번째 %d 주차 로또에 당첨 되었습니다\n", game_cnt);
-	printf("=================================================\n");
+	fprintf(fid, "======================================================\n");
+	fprintf(fid, "종료, 1 번째 선택한 번호가 %d 주차 로또에 당첨 되었습니다\n", game_cnt);
+	fprintf(fid, "======================================================\n");
+	
+	fclose(fid);
+	free(my_lotto); free(lotto);
 
 	return 0;
 }
@@ -65,10 +72,6 @@ void gen_lotto(int* lotto) {
 		}
 		if (chk == 1) lotto[cnt++] = num;
 	}
-	for (int i = 0; i < CNT_LOTTO + 1; ++i) {
-		printf("%d ", lotto[i]);
-	}
-	printf("\n");
 }
 
 void gen_my_lotto(int* my_lotto) {
@@ -87,7 +90,7 @@ void gen_my_lotto(int* my_lotto) {
 			}
 		}
 		if (duplicated == 1) {
-			printf("%d는 이미 입력한 번호입니다.", num);
+			printf("%d는 이미 입력한 번호입니다.\n", num);
 			continue;
 		}
 		my_lotto[i++] = num;
@@ -123,22 +126,22 @@ int check_lotto(int* my_lotto, int* lotto) {
 	else return -1; // invalid
 }
 
-void print_result(int* my_lotto, int* lotto, int result) {
-	printf("%d 주차 담청 번호 : ", game_cnt);
-	for (int i = 0; i < CNT_LOTTO; ++i) printf("%d ", lotto[i]); printf(" + 보너스 %d\n\n", lotto[CNT_LOTTO]);
-	printf("[1] 로또 선택 번호 : ");
-	for (int i = 0; i < CNT_LOTTO; ++i) printf("%d ", my_lotto[i]);
-	printf("\n");
-	printf("    당첨번호 갯수  : %d\n", chk);
-	printf("    당첨된 번호   : ");
-	if (chk == 0) { printf("%없음"); }
+void print_result(int* my_lotto, int* lotto, int result, FILE* fid) {
+	fprintf(fid, "%d 주차 담청 번호 : ", game_cnt);
+	for (int i = 0; i < CNT_LOTTO; ++i) fprintf(fid, "%d ", lotto[i]); fprintf(fid, " + 보너스 %d\n\n", lotto[CNT_LOTTO]);
+	fprintf(fid, "[1] 로또 선택 번호 : ");
+	for (int i = 0; i < CNT_LOTTO; ++i) fprintf(fid, "%d ", my_lotto[i]);
+	fprintf(fid, "\n");
+	fprintf(fid, "    당첨번호 갯수  : %d\n", chk);
+	fprintf(fid, "    당첨된 번호   : ");
+	if (chk == 0) { fprintf(fid, "없음"); }
 	else {
 		for (int i = 0; i < CNT_LOTTO; ++i) {
-			if (true_array[i] == 1) printf("%d ", my_lotto[i]);
+			if (true_array[i] == 1) fprintf(fid, "%d ", my_lotto[i]);
 		}
 	}
-	printf("\n");
-	printf("    이번주 로또 추첨 결과 %d등입니다.", result);
+	fprintf(fid, "\n");
+	fprintf(fid, "    이번주 로또 추첨 결과 %d등입니다.\n\n", result);
 }
 
 void current_time() {
