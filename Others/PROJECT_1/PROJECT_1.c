@@ -57,14 +57,13 @@ int main(int argc, char* argv[])
 	fprintf(fid, "종료, 1 번째 선택한 번호가 %d 주차 로또에 당첨 되었습니다\n", game_cnt);
 	fprintf(fid, "=================================================\n");
 	
-	fclose(fid);
-	free(my_lotto); free(lotto);
+	fclose(fid); free(my_lotto); free(lotto);
 
 	return 0;
 }
 
 void gen_lotto(int* lotto) {
-	for (int i = 0; i < CNT_LOTTO + 1; ++i) lotto[i] = 0; // + 1 is reserved for bonus number
+	for (int i = 0; i < CNT_LOTTO + 1; ++i) lotto[i] = 0; // gen_lotto[CNT_LOTTO + 1] is bonus number
 	const int lower = 1, upper = 45;
 	int cnt = 0;
 	while (cnt < CNT_LOTTO + 1) {
@@ -146,7 +145,7 @@ void print_result(int* my_lotto, int* lotto, int result, FILE* fid) {
 		}
 	}
 	fprintf(fid, "\n");
-	if (result < 3) fprintf(fid, "    이번주 로또 추첨 결과 꽝입니다.\n\n");
+	if (result == 0) fprintf(fid, "    이번주 로또 추첨 결과 꽝입니다.\n\n");
 	else fprintf(fid, "    이번주 로또 추첨 결과 %d등입니다.\n\n", result);
 }
 
