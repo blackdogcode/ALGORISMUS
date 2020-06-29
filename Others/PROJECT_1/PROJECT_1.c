@@ -1,11 +1,10 @@
-﻿// PROJECT_1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>
 #include <locale.h>
 #pragma warning (disable : 4996)
+#pragma warning (disable : 6031)
 
 #define CNT_LOTTO 6
 
