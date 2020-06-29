@@ -34,7 +34,13 @@ int main(int argc, char* argv[])
 	gen_my_lotto(my_lotto);
 
 	int* lotto = (int*)malloc((CNT_LOTTO + 1) * sizeof(int));
-	int goal; printf("목표 등수를 정하시오 [1-5] : "); scanf("%d", &goal);
+	int goal; 
+	do {
+		printf("목표 등수를 정하시오 [1-5] : ");
+		scanf("%d", &goal);
+		if (goal < 1 || goal > 5) printf("1-5 사이의 번호를 입력해주세요\n");
+		else break;
+	} while (1);
 
 	srand(time(NULL));
 	do {
@@ -48,9 +54,9 @@ int main(int argc, char* argv[])
 		++game_cnt;
 	} while (1);
 
-	fprintf(fid, "======================================================\n");
+	fprintf(fid, "=================================================\n");
 	fprintf(fid, "종료, 1 번째 선택한 번호가 %d 주차 로또에 당첨 되었습니다\n", game_cnt);
-	fprintf(fid, "======================================================\n");
+	fprintf(fid, "=================================================\n");
 	
 	fclose(fid);
 	free(my_lotto); free(lotto);
