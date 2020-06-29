@@ -77,7 +77,7 @@ void gen_lotto(int* lotto) {
 void gen_my_lotto(int* my_lotto) {
 	int i = 0, duplicated;
 	while(i < CNT_LOTTO) {
-		printf("\t[1] 로또 번호 입력 : ");
+		printf("\t[%d] 로또 번호 입력 : ", i + 1);
 		int num; scanf("%d", &num);
 		if (num <= 0 || num > 45) {
 			printf("1-45 사이의 번호를 입력해주십시오");
@@ -141,7 +141,8 @@ void print_result(int* my_lotto, int* lotto, int result, FILE* fid) {
 		}
 	}
 	fprintf(fid, "\n");
-	fprintf(fid, "    이번주 로또 추첨 결과 %d등입니다.\n\n", result);
+	if (result < 3) fprintf(fid, "    이번주 로또 추첨 결과 꽝입니다.\n\n");
+	else fprintf(fid, "    이번주 로또 추첨 결과 %d등입니다.\n\n", result);
 }
 
 void current_time() {
