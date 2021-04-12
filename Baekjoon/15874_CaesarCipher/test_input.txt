@@ -1,0 +1,7 @@
+3
+4 10
+I AM JOHN.
+26 10
+I AM JOHN.
+5 37
+I love Red Black Tree, how about you.
