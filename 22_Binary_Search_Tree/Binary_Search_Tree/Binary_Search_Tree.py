@@ -7,6 +7,21 @@ class BinarySearchTree:
         self.left_child = None
         self.right_child = None
 
+    def find(self, key):
+        if self.key == key:
+            return True
+
+        if key < self.key:
+            if self.left_child is None:
+                return False
+            else:
+                return self.left_child.find(key)
+        else:
+            if self.right_child is None:
+                return False
+            else:
+                return self.right_child.find(key)
+
     def add(self, key):
         if self.key == key:
             return
@@ -22,20 +37,9 @@ class BinarySearchTree:
             else:
                 self.right_child.add(key)
 
-    def find(self, key):
+    def delete(self, key):
         if self.key == key:
-            return True
-
-        if key < self.key:
-            if self.left_child is None:
-                return False
-            else:
-                return self.left_child.find(key)
-        else:
-            if self.right_child is None:
-                return False
-            else:
-                return self.right_child.find(key)
+            self = None
 
     def min(self):
         min_key = self.key
