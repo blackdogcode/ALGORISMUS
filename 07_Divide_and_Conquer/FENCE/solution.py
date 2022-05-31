@@ -1,5 +1,8 @@
 # https://algospot.com/judge/problem/read/FENCE
 import sys
+sys.setrecursionlimit(10 ** 5)
+input = sys.stdin.readline
+
 
 def fence(start: int, end: int, board: list):
     # 기저 조건
@@ -39,10 +42,10 @@ def fence(start: int, end: int, board: list):
     return max_area
 
 # 제출용
-test_case = int(sys.stdin.readline())
+test_case = int(input())
 for _ in range(test_case):
-    n = int(sys.stdin.readline())
-    board = list(map(int, sys.stdin.readline().split()))
+    n = int(input())
+    board = list(map(int, input().split()))
     print(fence(0, n - 1, board))
 
 # 테스트용
