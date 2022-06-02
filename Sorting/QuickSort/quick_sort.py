@@ -1,7 +1,7 @@
 #  https://www.acmicpc.net/problem/2750
-#  TYPE: Merge Sort[O(nlogn)]
+#  TYPE: Quick Sort[O(nlogn)]
 #  GOAL: Sort Array in non-decreasing order
-#  Paradigm: Divide_and_Conque
+#  Paradigm: Divide_and_Conquer
 import sys, random
 sys.setrecursionlimit(10 ** 6)
 input = sys.stdin.readline
