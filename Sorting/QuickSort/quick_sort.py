@@ -11,7 +11,7 @@ def quick_sort(arr: list, p: int, r: int):
     # base condition
     if p >= r:
         return
-    # partitioning - divide
+    # partitioning - conquer
     i = p - 1
     for j in range(p, r + 1):
         if arr[j] < arr[r]:  # arr[r] is pivot
@@ -20,7 +20,7 @@ def quick_sort(arr: list, p: int, r: int):
     i += 1
     arr[i], arr[r] = arr[r], arr[i]
 
-    # conquer
+    # divide
     quick_sort(arr, p, i - 1)
     quick_sort(arr, i + 1, r)
 
