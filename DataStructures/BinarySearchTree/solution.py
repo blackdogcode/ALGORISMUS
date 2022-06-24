@@ -1,6 +1,10 @@
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_A
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_B
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_C
+
+# reference solution
+# https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=2929933#1
+# https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=2195105#1
 from typing import Optional
 import sys
 sys.setrecursionlimit(10 ** 6)
@@ -40,8 +44,6 @@ class BinarySearchTree:
             y.right = node
 
     def preorder_traversal(self, node: Optional[TreeNode], order: list):
-        if node is None:
-            return
         order.append(node.key)
         if node.left is not None:
             self.preorder_traversal(node.left, order)
@@ -80,9 +82,9 @@ for _ in range(m):
 #         operation = test_input.readline().split()
 #         if operation[0] == 'print':
 #             pre_order, in_order = [], []
-#             bst.inorder_traversal(bst.root, in_order)
+#             bst.print_traversal(0, in_order)
 #             print("", *in_order)
-#             bst.preorder_traversal(bst.root, pre_order)
+#             bst.print_traversal(1, pre_order)
 #             print("", *pre_order)
 #         if operation[0] == 'insert':
 #             key = int(operation[1])
