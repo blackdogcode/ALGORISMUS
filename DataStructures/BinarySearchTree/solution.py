@@ -39,25 +39,23 @@ class BinarySearchTree:
         else:
             y.right = node
 
-    def print_traversal(self, mode, order):
-        if mode == 0:
-            self.print_inorder(self.root, order)
-        if mode == 1:
-            self.print_preorder(self.root, order)
-
-    def print_preorder(self, node: Optional[TreeNode], order: list):
+    def preorder_traversal(self, node: Optional[TreeNode], order: list):
+        if node is None:
+            return
         order.append(node.key)
         if node.left is not None:
-            self.print_preorder(node.left, order)
+            self.preorder_traversal(node.left, order)
         if node.right is not None:
-            self.print_preorder(node.right, order)
+            self.preorder_traversal(node.right, order)
 
-    def print_inorder(self, node: Optional[TreeNode], order: list):
+    def inorder_traversal(self, node: Optional[TreeNode], order: list):
+        if node is None:
+            return
         if node.left is not None:
-            self.print_inorder(node.left, order)
+            self.inorder_traversal(node.left, order)
         order.append(node.key)
         if node.right is not None:
-            self.print_inorder(node.right, order)
+            self.inorder_traversal(node.right, order)
 
 
 m = int(input())
@@ -65,10 +63,10 @@ bst = BinarySearchTree()
 for _ in range(m):
     operation = input().split()
     if operation[0] == 'print':
-        pre_order, in_order = [], []
-        bst.print_traversal(0, in_order)
+        in_order, pre_order = [], []
+        bst.inorder_traversal(bst.root, in_order)
         print("", *in_order)
-        bst.print_traversal(1, pre_order)
+        bst.preorder_traversal(bst.root, pre_order)
         print("", *pre_order)
     if operation[0] == 'insert':
         key = int(operation[1])
@@ -82,9 +80,9 @@ for _ in range(m):
 #         operation = test_input.readline().split()
 #         if operation[0] == 'print':
 #             pre_order, in_order = [], []
-#             bst.print_traversal(0, in_order)
+#             bst.inorder_traversal(bst.root, in_order)
 #             print("", *in_order)
-#             bst.print_traversal(1, pre_order)
+#             bst.preorder_traversal(bst.root, pre_order)
 #             print("", *pre_order)
 #         if operation[0] == 'insert':
 #             key = int(operation[1])
