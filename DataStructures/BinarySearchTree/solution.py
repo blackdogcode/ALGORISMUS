@@ -1,10 +1,11 @@
+# implementation problems
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_A
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_B
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_8_C
 
-# reference solution
+# reference solution - insert, traversal
 # https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=2929933#1
-# https://judge.u-aizu.ac.jp/onlinejudge/review.jsp?rid=2195105#1
+
 from typing import Optional
 import sys
 sys.setrecursionlimit(10 ** 6)
@@ -22,103 +23,74 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    def insert(self, node: Optional[TreeNode]):
-        if self.root is None:
-            self.root = node
-            return
-
+    def insert(self, key: int):
+        z = TreeNode(key)
         y = None
         x = self.root
-        while x is not None:
-            if node.key == x.key:
-                return
+        while x:
             y = x
-            if node.key < x.key:
+            if z.key < x.key:
                 x = x.left
             else:
                 x = x.right
-
-        if node.key < y.key:
-            y.left = node
+        z.parent = y
+        if y is None:
+            self.root = z
+        elif z.key < y.key:
+            y.left = z
         else:
-            y.right = node
+            y.right = z
 
-    def preorder_traversal(self, node: Optional[TreeNode], order: list):
-        order.append(node.key)
-        if node.left is not None:
-            self.preorder_traversal(node.left, order)
-        if node.right is not None:
-            self.preorder_traversal(node.right, order)
-
-    def inorder_traversal(self, node: Optional[TreeNode], order: list):
+    def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
-            return
-        if node.left is not None:
-            self.inorder_traversal(node.left, order)
-        order.append(node.key)
-        if node.right is not None:
-            self.inorder_traversal(node.right, order)
+            return []
+        ret = [node.key]
+        ret += self.preorder_traversal(node.left)
+        ret += self.preorder_traversal(node.right)
+        return ret
+
+    def inorder_traversal(self, node: Optional[TreeNode]):
+        if node is None:
+            return []
+        ret = []
+        ret += self.inorder_traversal(node.left)
+        ret += [node.key]
+        ret += self.inorder_traversal(node.right)
+        return ret
+
+    def postorder_traversal(self, node: Optional[TreeNode]):
+        if node is None:
+            return []
+        ret = []
+        ret += self.inorder_traversal(node.left)
+        ret += self.inorder_traversal(node.right)
+        ret += [node.key]
+        return ret
 
 
 m = int(input())
 bst = BinarySearchTree()
 for _ in range(m):
-    operation = input().split()
-    if operation[0] == 'print':
-        in_order, pre_order = [], []
-        bst.inorder_traversal(bst.root, in_order)
+    command = input().split()
+    if command[0] == 'print':
+        in_order = bst.inorder_traversal(bst.root)
         print("", *in_order)
-        bst.preorder_traversal(bst.root, pre_order)
+        pre_order = bst.preorder_traversal(bst.root)
         print("", *pre_order)
-    if operation[0] == 'insert':
-        key = int(operation[1])
-        bst.insert(TreeNode(key))
+    if command[0] == 'insert':
+        key = int(command[1])
+        bst.insert(key)
 
 # with open('sample_input.txt') as test_input:
 #     bst = BinarySearchTree()
-#
 #     m = int(test_input.readline())
 #     for _ in range(m):
-#         operation = test_input.readline().split()
-#         if operation[0] == 'print':
-#             pre_order, in_order = [], []
-#             bst.print_traversal(0, in_order)
+#         command = test_input.readline().split()
+#         if command[0] == 'print':
+#             in_order = bst.inorder_traversal(bst.root)
 #             print("", *in_order)
-#             bst.print_traversal(1, pre_order)
+#             pre_order = bst.preorder_traversal(bst.root)
 #             print("", *pre_order)
-#         if operation[0] == 'insert':
-#             key = int(operation[1])
-#             bst.insert(TreeNode(key))
-
-
-
-
-
-#     def inorder_traversal(self):
-#         print(self.val)
-#         if self.left is not None:
-#             self.inorder_traversal(self.left)
-#         if self.right is not None:
-#             self.inorder_traversal(self.right)
-#
-#
-#
-# class Solution:
-#     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-#         if root is None:
-#             return None
-#
-#         if val == root.val:
-#             self.inorder_traversal(root)
-#         elif val < root.val:
-#             self.searchBST(root.left, val)
-#         else:
-#             self.searchBST(root.right, val)
-#
-#     def inorder_traversal(self, root: Optional[TreeNode]):
-#         print(root.val)
-#         if root.left is not None:
-#             self.inorder_traversal(root.left)
-#         if root.right is not None:
-#             self.inorder_traversal(root.right)
-#
+#         if command[0] == 'insert':
+#             key = int(command[1])
+#             bst.insert(key)
