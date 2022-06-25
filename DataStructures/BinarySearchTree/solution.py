@@ -41,6 +41,17 @@ class BinarySearchTree:
         else:
             y.right = z
 
+    def find(self, key: int):
+        x = self.root
+        while x:
+            if x.key == key:
+                return 'yes'
+            if key < x.key:
+                x = x.left
+            else:
+                x = x.right
+        return 'no'
+
     def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
             return []
@@ -72,25 +83,31 @@ m = int(input())
 bst = BinarySearchTree()
 for _ in range(m):
     command = input().split()
+    if command[0] == 'insert':
+        key = int(command[1])
+        bst.insert(key)
     if command[0] == 'print':
         in_order = bst.inorder_traversal(bst.root)
         print("", *in_order)
         pre_order = bst.preorder_traversal(bst.root)
         print("", *pre_order)
-    if command[0] == 'insert':
+    if command[0] == 'find':
         key = int(command[1])
-        bst.insert(key)
+        print(bst.find(key))
 
 # with open('sample_input.txt') as test_input:
 #     bst = BinarySearchTree()
 #     m = int(test_input.readline())
 #     for _ in range(m):
 #         command = test_input.readline().split()
+#         if command[0] == 'insert':
+#             key = int(command[1])
+#             bst.insert(key)
 #         if command[0] == 'print':
 #             in_order = bst.inorder_traversal(bst.root)
 #             print("", *in_order)
 #             pre_order = bst.preorder_traversal(bst.root)
 #             print("", *pre_order)
-#         if command[0] == 'insert':
+#         if command[0] == 'find':
 #             key = int(command[1])
-#             bst.insert(key)
+#             print(bst.find(key))
