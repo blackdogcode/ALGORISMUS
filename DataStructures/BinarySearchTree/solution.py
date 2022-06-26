@@ -45,12 +45,54 @@ class BinarySearchTree:
         x = self.root
         while x:
             if x.key == key:
-                return 'yes'
+                return x
             if key < x.key:
                 x = x.left
             else:
                 x = x.right
-        return 'no'
+        return None
+
+    def delete(self, key: int):
+        node = self.find(key)
+        if node is None:
+            return
+        parent_node = node.parent
+        # have no child: leaf node
+        if node.left is None and node.right is None:
+            if node is parent_node.left:
+                parent_node.left = None
+            else:
+                parent_node.right = None
+
+        # have one child
+        if (node.left is None and node.right is not None) or (node.left is not None and node.right is None):
+            if node.left is None:
+                if node is parent_node.left:
+                    parent_node.left = node.right
+                else:
+                    parent_node.right = node.right
+                node.right.parent = node.parent
+            else:
+                if node is parent_node.left:
+                    parent_node.left = node.left
+                else:
+                    parent_node.right = node.left
+                node.left.parent = node.parent
+
+        # have two child
+        if node.left is not None and node.right is not None:
+            # get successor
+            successor = node.right
+            while successor.left is not None:
+                successor = successor.left
+            # key swap
+            node.key, successor.key = successor.key, node.key
+            # delete successor node
+            parent_successor = successor.parent
+            if parent_successor.left == successor:
+                parent_successor.left = None
+            else:
+                parent_successor.right = None
 
     def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
@@ -86,14 +128,22 @@ for _ in range(m):
     if command[0] == 'insert':
         key = int(command[1])
         bst.insert(key)
+    if command[0] == 'delete':
+        key = int(command[1])
+        bst.delete(key)
+    if command[0] == 'find':
+        key = int(command[1])
+        node = bst.find(key)
+        if node is not None:
+            print('yes')
+        else:
+            print('no')
     if command[0] == 'print':
         in_order = bst.inorder_traversal(bst.root)
         print("", *in_order)
         pre_order = bst.preorder_traversal(bst.root)
         print("", *pre_order)
-    if command[0] == 'find':
-        key = int(command[1])
-        print(bst.find(key))
+
 
 # with open('sample_input.txt') as test_input:
 #     bst = BinarySearchTree()
@@ -103,11 +153,18 @@ for _ in range(m):
 #         if command[0] == 'insert':
 #             key = int(command[1])
 #             bst.insert(key)
+#         if command[0] == 'delete':
+#             key = int(command[1])
+#             bst.delete(key)
+#         if command[0] == 'find':
+#             key = int(command[1])
+#             node = bst.find(key)
+#             if node is not None:
+#                 print('yes')
+#             else:
+#                 print('no')
 #         if command[0] == 'print':
 #             in_order = bst.inorder_traversal(bst.root)
 #             print("", *in_order)
 #             pre_order = bst.preorder_traversal(bst.root)
 #             print("", *pre_order)
-#         if command[0] == 'find':
-#             key = int(command[1])
-#             print(bst.find(key))
