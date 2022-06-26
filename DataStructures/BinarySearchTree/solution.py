@@ -59,6 +59,9 @@ class BinarySearchTree:
         parent_node = node.parent
         # have no child: leaf node
         if node.left is None and node.right is None:
+            if node is self.root:
+                self.root = None
+                return
             if node is parent_node.left:
                 parent_node.left = None
             else:
@@ -67,12 +70,20 @@ class BinarySearchTree:
         # have one child
         if (node.left is None and node.right is not None) or (node.left is not None and node.right is None):
             if node.left is None:
+                if node is self.root:
+                    self.root.right.parent = None
+                    self.root = self.root.right
+                    return
                 if node is parent_node.left:
                     parent_node.left = node.right
                 else:
                     parent_node.right = node.right
                 node.right.parent = node.parent
             else:
+                if node is self.root:
+                    self.root.left.parent = None
+                    self.root = self.root.left
+                    return
                 if node is parent_node.left:
                     parent_node.left = node.left
                 else:

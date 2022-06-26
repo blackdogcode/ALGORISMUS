@@ -1,3 +1,15 @@
+10
+insert 3
+insert 2
+insert 5
+print
+delete 3
+print
+delete 5
+print
+delete 2
+print
+
 43
 insert 30
 insert 17
