@@ -3,7 +3,7 @@ from typing import Optional
 
 
 class TreeNode:
-    max_degree = 3
+    max_degree = 13
 
     def __init__(self):
         self.keys = []
@@ -142,14 +142,17 @@ class BTree:
 btree = BTree()
 with open('input.csv', mode='r') as input_file:
     csvFile = csv.reader(input_file, delimiter='\t')
+    print('inserting...')
     for line in csvFile:
         key, val = map(int, line)
         btree.insert(key, val)
+    print('insert completed')
 
 # btree.preorder_traversal(btree.root)
 
 with open('input.csv', mode='r') as input_file:
     csvFile = csv.reader(input_file, delimiter='\t')
+    print('comparing...')
     for line in csvFile:
         key, val = map(int, line)
         ret_val = btree.search(btree.root, key)
