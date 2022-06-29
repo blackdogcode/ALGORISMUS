@@ -118,14 +118,14 @@ class BTree:
 
         self.split(parent_node)
 
-    def search(self, node: Optional[TreeNode], key: int):
+    def search(self, node: Optional[TreeNode], key: int) -> int:
         i = 0
         while i < len(node.keys) and key > node.keys[i]:
             i += 1
         if i < len(node.keys) and key == node.keys[i]:
-            return [node.keys[i], node.values[i]]
+            return node.values[i]
         elif node.leaf is True:
-            return False
+            return -1
         else:
             return self.search(node.children[i], key)
 
@@ -152,8 +152,12 @@ with open('input.csv', mode='r') as input_file:
     csvFile = csv.reader(input_file, delimiter='\t')
     for line in csvFile:
         key, val = map(int, line)
-        ret_key, ret_val = btree.search(btree.root, key)
-        print(ret_key, ret_val)
+        ret_val = btree.search(btree.root, key)
+        if ret_val != val:
+            print('miss match')
+            break
+    else:
+        print('success match')
 
 
 # btree = BTree()
