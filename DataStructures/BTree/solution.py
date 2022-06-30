@@ -1,9 +1,11 @@
+# Reference Algorithm: https://algorithmtutor.com/Data-Structures/Tree/B-Trees/
+# Reference Visualization: https://www.cs.usfca.edu/~galles/visualization/BTree.html
 import csv
 from typing import Optional
 
 
 class TreeNode:
-    max_degree = 13
+    max_degree = 29
 
     def __init__(self):
         self.keys = []
@@ -12,7 +14,7 @@ class TreeNode:
         self.leaf = True
         self.parent = None
 
-    def add_key(self, key, value):
+    def add_key(self, key: Optional[int], value: Optional[int]):
         self.keys.append(key)
         self.keys.sort()
         idx = self.keys.index(key)
@@ -35,10 +37,7 @@ class BTree:
         x = self.root
         if x.leaf is True:
             x.add_key(key, value)
-            if not x.children:
-                x.children.extend([None, None])
-            else:
-                x.children.append(None)
+            x.children.append(None)
             if len(x.keys) == TreeNode.max_degree:
                 self.split(x)
         else:
@@ -51,10 +50,7 @@ class BTree:
                 x = x.children[i]
             x.parent = y
             x.add_key(key, value)
-            if not x.children:
-                x.children.extend([None, None])
-            else:
-                x.children.append(None)
+            x.children.append(None)
             if len(x.keys) == TreeNode.max_degree:
                 self.split(x)
 
@@ -64,59 +60,36 @@ class BTree:
         if len(node.keys) < TreeNode.max_degree:
             return
 
-        # increase height
-        if node == self.root:
-            mid_point = len(self.root.keys) // 2
-            median_key = self.root.keys[mid_point]
-            median_val = self.root.values[mid_point]
-            new_node = TreeNode()
-            new_node.children = node.children[mid_point + 1:]
-            node.children = node.children[:mid_point + 1]
-            new_node.keys = node.keys[mid_point + 1:]
-            node.keys = node.keys[:mid_point]
-            new_node.values = node.values[mid_point + 1:]
-            node.values = node.values[:mid_point]
-            new_root = TreeNode()
-            new_root.add_key(median_key, median_val)
-            new_root.children = [node, new_node]
-            new_root.leaf = False
-            self.root = new_root
-
-            if None not in node.children:
-                node.leaf = False
-            if None not in new_node.children:
-                new_node.leaf = False
-            return
-
         mid_point = len(node.keys) // 2
         median_key = node.keys[mid_point]
         median_val = node.values[mid_point]
-
         new_node = TreeNode()
-        new_node.parent = node.parent
-        new_node.children = node.children[mid_point +1:]
+        new_node.children = node.children[mid_point + 1:]
         node.children = node.children[:mid_point + 1]
         new_node.keys = node.keys[mid_point + 1:]
         node.keys = node.keys[:mid_point]
         new_node.values = node.values[mid_point + 1:]
         node.values = node.values[:mid_point]
 
-        # node.keys.remove(median_key)
-        # del node.children[mid_point]
-
-        parent_node: TreeNode = node.parent
-        parent_node.add_key(median_key, median_val)
-        idx = parent_node.keys.index(median_key)
-        parent_node.children.insert(idx + 1, None)
-
-        parent_node.children[idx + 1] = new_node
-
         if None not in node.children:
             node.leaf = False
         if None not in new_node.children:
             new_node.leaf = False
 
-        self.split(parent_node)
+        if node == self.root:
+            new_root = TreeNode()
+            new_root.add_key(median_key, median_val)
+            new_root.children = [node, new_node]
+            new_root.leaf = False
+            self.root = new_root
+        else:
+            new_node.parent = node.parent
+            parent_node: TreeNode = node.parent
+            parent_node.add_key(median_key, median_val)
+            idx = parent_node.keys.index(median_key)
+            parent_node.children.insert(idx + 1, None)
+            parent_node.children[idx + 1] = new_node
+            self.split(parent_node)
 
     def search(self, node: Optional[TreeNode], key: int) -> int:
         i = 0
@@ -138,43 +111,61 @@ class BTree:
             self.preorder_traversal(node.children[i])
         self.preorder_traversal(node.children[-1])
 
+    def clear(self):
+        self.root = None
+
 
 btree = BTree()
-with open('input.csv', mode='r') as input_file:
-    csvFile = csv.reader(input_file, delimiter='\t')
-    print('inserting...')
-    for line in csvFile:
-        key, val = map(int, line)
-        btree.insert(key, val)
-    print('insert completed')
-
-# btree.preorder_traversal(btree.root)
-
-with open('input.csv', mode='r') as input_file:
-    csvFile = csv.reader(input_file, delimiter='\t')
-    print('comparing...')
-    for line in csvFile:
-        key, val = map(int, line)
-        ret_val = btree.search(btree.root, key)
-        if ret_val != val:
-            print('miss match')
-            break
+while True:
+    operation = int(input('''
+B-Tree Simulation
+Select Command Number
+1. insert
+2. delete
+3. quit
+4. clear
+--> '''))
+    if operation == 1:
+        file_path = input('insert file path: ')
+        with open(file_path, mode='r') as input_file:
+            csvFile = csv.reader(input_file, delimiter='\t')
+            print('inserting key-value pairs in b-tree...')
+            for line in csvFile:
+                key, val = map(int, line)
+                btree.insert(key, val)
+            print('inserting is completed')
+        # search and match
+        with open(file_path, mode='r') as search_file:
+            csvFile = csv.reader(search_file, delimiter='\t')
+            print('searching and match comparing...')
+            for line in csvFile:
+                key, val = map(int, line)
+                ret_val = btree.search(btree.root, key)
+                if ret_val != val:
+                    print('unsuccessful match')
+                    break
+            else:
+                print('successful match')
+    elif operation == 2:
+        print('deletion is not implemented yet')
+    elif operation == 3:
+        break
+    elif operation == 4:
+        btree.clear()
     else:
-        print('success match')
+        print(f'Invalid Command')
 
 
+# Testing and Debugging
 # btree = BTree()
-# btree.insert(100)
-# btree.insert(50)
-# btree.insert(25)
-# btree.insert(13)
-# btree.insert(75)
-# btree.insert(20)
-# btree.insert(80)
-# btree.insert(55)
-# btree.insert(77)
+# with open('input.csv', mode='r') as input_file:
+#     csvFile = csv.reader(input_file, delimiter='\t')
+#     i = 0
+#     for line in csvFile:
+#         key, val = map(int, line)
+#         btree.insert(key, val)
+#         i += 1
+#         if i == 20:
+#             break
 #
-# print(btree.search(btree.root, 77))
-# print(btree.search(btree.root, 100))
-# print(btree.search(btree.root, 33))
 # btree.preorder_traversal(btree.root)
