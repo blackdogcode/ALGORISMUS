@@ -14,7 +14,7 @@ class TreeNode:
         self.leaf = True
         self.parent = None
 
-    def add_key(self, key: Optional[int], value: Optional[int]):
+    def add_key(self, key, value):
         self.keys.append(key)
         self.keys.sort()
         idx = self.keys.index(key)
@@ -25,7 +25,7 @@ class BTree:
     def __init__(self):
         self.root: TreeNode = None
 
-    def insert(self, key: Optional[int], value: Optional[int]):
+    def insert(self, key, value):
         if self.root is None:
             self.root = TreeNode()
             self.root.add_key(key, value)
@@ -54,7 +54,7 @@ class BTree:
             if len(x.keys) == TreeNode.max_degree:
                 self.split(x)
 
-    def split(self, node: [TreeNode]):
+    def split(self, node: Optional[TreeNode]):
         if node is None:
             return
         if len(node.keys) < TreeNode.max_degree:
@@ -91,7 +91,7 @@ class BTree:
             parent_node.children[idx + 1] = new_node
             self.split(parent_node)
 
-    def search(self, node: Optional[TreeNode], key: int) -> int:
+    def search(self, node: Optional[TreeNode], key):
         i = 0
         while i < len(node.keys) and key > node.keys[i]:
             i += 1
