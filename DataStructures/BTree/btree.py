@@ -1,6 +1,8 @@
 # Reference Algorithm: https://algorithmtutor.com/Data-Structures/Tree/B-Trees/
 # Reference Visualization: https://www.cs.usfca.edu/~galles/visualization/BTree.html
+from collections import deque
 import csv
+import filecmp
 from typing import Optional
 
 
@@ -92,6 +94,8 @@ class BTree:
             self.split(parent_node)
 
     def search(self, node: Optional[TreeNode], key):
+        if node is None:
+            return -1
         i = 0
         while i < len(node.keys) and key > node.keys[i]:
             i += 1
@@ -126,26 +130,40 @@ Select Command Number
 4. clear
 --> '''))
     if operation == 1:
-        file_path = input('insert file path: ')
-        with open(file_path, mode='r') as input_file:
+        # insert
+        file_name = input('insert file name(e.g. input.csv): ')
+        with open(file_name, mode='r') as input_file:
             csvFile = csv.reader(input_file, delimiter='\t')
             print('inserting key-value pairs in b-tree...')
             for line in csvFile:
                 key, val = map(int, line)
                 btree.insert(key, val)
             print('inserting is completed')
-        # search and match
-        with open(file_path, mode='r') as search_file:
+        # search
+        keys_vals = deque()
+        with open(file_name, mode='r') as search_file:
             csvFile = csv.reader(search_file, delimiter='\t')
-            print('searching and match comparing...')
+            print('searching...')
             for line in csvFile:
                 key, val = map(int, line)
                 ret_val = btree.search(btree.root, key)
-                if ret_val != val:
-                    print('unsuccessful match')
-                    break
-            else:
-                print('successful match')
+                keys_vals.append((key, ret_val))
+            print('searching completed')
+        # write
+        result_file = 'input_result.csv'
+        print('writing result file')
+        with open(result_file, mode='w') as write_file:
+            for key_val in keys_vals:
+                key, val = key_val
+                write_file.write(f'{key}\t{val}\r')
+        print('writing completed')
+        # compare
+        print(f'comparing {file_name} with {result_file}')
+        result = filecmp.cmp(file_name, result_file)
+        if result == 0:
+            print('both file matched')
+        else:
+            print('both file mismatched')
     elif operation == 2:
         print('deletion is not implemented yet')
     elif operation == 3:
