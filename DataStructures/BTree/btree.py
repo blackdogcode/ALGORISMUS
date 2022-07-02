@@ -2,12 +2,14 @@
 # Reference Visualization: https://www.cs.usfca.edu/~galles/visualization/BTree.html
 from collections import deque
 import csv
+import math
 import filecmp
+from typing import Tuple
 from typing import Optional
 
 
 class TreeNode:
-    max_degree = 29
+    max_degree = 5
 
     def __init__(self):
         self.keys = []
@@ -21,6 +23,9 @@ class TreeNode:
         self.keys.sort()
         idx = self.keys.index(key)
         self.values.insert(idx, value)
+
+    def has_extra_keys(self):
+        return len(self.keys) >= math.ceil(TreeNode.max_degree / 2)
 
 
 class BTree:
@@ -93,23 +98,49 @@ class BTree:
             parent_node.children[idx + 1] = new_node
             self.split(parent_node)
 
-    def search(self, node: Optional[TreeNode], key):
+    def search(self, node: Optional[TreeNode], key) -> Tuple[TreeNode, int]:
         if node is None:
-            return -1
-        i = 0
-        while i < len(node.keys) and key > node.keys[i]:
-            i += 1
-        if i < len(node.keys) and key == node.keys[i]:
-            return node.values[i]
+            return None, None
+        idx = 0
+        while idx < len(node.keys) and key > node.keys[idx]:
+            idx += 1
+        if idx < len(node.keys) and key == node.keys[idx]:
+            return node, idx
         elif node.leaf is True:
-            return -1
+            return None, None
         else:
-            return self.search(node.children[i], key)
+            node.children[idx].parent = node
+            return self.search(node.children[idx], key)
+
+    def delete(self, key):
+        node, idx = self.search(self.root, key)
+        if node is None:  # There is no key in tree
+            return None
+
+        if node.leaf:
+            if node == self.root:
+                node.keys.remove(node.keys[idx])
+                node.children.pop()
+                # node.keys = node.keys[:idx] + node.keys[idx + 1:]
+                # node.children = node.children[:idx] + node.children[idx + 1]
+                if len(node.keys) == 0:
+                    self.root = None
+                return
+            if node.has_extra_keys():
+                node.keys.remove(node.keys[idx])
+                node.children.pop()
+                return
+            else:
+                pass
+        else:
+            pass
+
+
+
 
     def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
             return
-
         for i in range(len(node.keys)):
             print(node.keys[i], end=' ')
             self.preorder_traversal(node.children[i])
@@ -119,71 +150,87 @@ class BTree:
         self.root = None
 
 
-btree = BTree()
-while True:
-    operation = int(input('''
-B-Tree Simulation
-Select Command Number
-1. insert
-2. delete
-3. quit
-4. clear
---> '''))
-    if operation == 1:
-        # insert
-        file_name = input('insert file name(e.g. input.csv): ')
-        with open(file_name, mode='r') as input_file:
-            csvFile = csv.reader(input_file, delimiter='\t')
-            print('inserting key-value pairs in b-tree...')
-            for line in csvFile:
-                key, val = map(int, line)
-                btree.insert(key, val)
-            print('inserting is completed')
-        # search
-        keys_vals = deque()
-        with open(file_name, mode='r') as search_file:
-            csvFile = csv.reader(search_file, delimiter='\t')
-            print('searching...')
-            for line in csvFile:
-                key, val = map(int, line)
-                ret_val = btree.search(btree.root, key)
-                keys_vals.append((key, ret_val))
-            print('searching completed')
-        # write
-        result_file = 'input_result.csv'
-        print('writing result file')
-        with open(result_file, mode='w') as write_file:
-            for key_val in keys_vals:
-                key, val = key_val
-                write_file.write(f'{key}\t{val}\r')
-        print('writing completed')
-        # compare
-        print(f'comparing {file_name} with {result_file}')
-        result = filecmp.cmp(file_name, result_file)
-        if result == 0:
-            print('both file matched')
-        else:
-            print('both file mismatched')
-    elif operation == 2:
-        print('deletion is not implemented yet')
-    elif operation == 3:
-        break
-    elif operation == 4:
-        btree.clear()
-    else:
-        print(f'Invalid Command')
-
-
 # Testing and Debugging
+btree = BTree()
+with open('input_0.csv', mode='r') as insert_file:
+    csvFile = csv.reader(insert_file, delimiter='\t')
+    i = 0
+    for line in csvFile:
+        key, val = line
+        btree.insert(key, val)
+        i += 1
+        if i == 20:
+            break
+btree.preorder_traversal(btree.root)
+print()
+
+with open('delete_0.csv', mode='r') as delete_file:
+    csvFile = csv.reader(delete_file, delimiter='\t')
+    i = 0
+    for line in csvFile:
+        key, val = line
+        btree.delete(key)
+        i += 1
+        if i == 1:
+            break
+btree.preorder_traversal(btree.root)
+
 # btree = BTree()
-# with open('input.csv', mode='r') as input_file:
-#     csvFile = csv.reader(input_file, delimiter='\t')
-#     i = 0
-#     for line in csvFile:
-#         key, val = map(int, line)
-#         btree.insert(key, val)
-#         i += 1
-#         if i == 20:
-#             break
-#
-# btree.preorder_traversal(btree.root)
+# while True:
+#     operation = int(input('''
+# B-Tree Simulation
+# Select Command Number
+# 1. insert
+# 2. delete
+# 3. quit
+# 4. clear
+# --> '''))
+#     if operation == 1:
+#         # insert
+#         file_name = input('insert file name(e.g. input.csv): ')
+#         with open(file_name, mode='r') as input_file:
+#             csvFile = csv.reader(input_file, delimiter='\t')
+#             print('inserting key-value pairs in b-tree...')
+#             for line in csvFile:
+#                 key, val = map(int, line)
+#                 btree.insert(key, val)
+#             print('inserting is completed')
+#         # search
+#         keys_vals = deque()
+#         with open(file_name, mode='r') as search_file:
+#             csvFile = csv.reader(search_file, delimiter='\t')
+#             print('searching...')
+#             for line in csvFile:
+#                 key, val = map(int, line)
+#                 node, idx = btree.search(btree.root, key)
+#                 ret_val = 'N/A'
+#                 if node is not None:
+#                     ret_val = node.values[idx]
+#                 keys_vals.append((key, ret_val))
+#             print('searching completed')
+#         # write
+#         result_file = 'input_result.csv'
+#         print('writing result file')
+#         with open(result_file, mode='w') as write_file:
+#             for key_val in keys_vals:
+#                 key, val = key_val
+#                 write_file.write(f'{key}\t{val}\r')
+#         print('writing completed')
+#         # compare
+#         print(f'comparing {file_name} with {result_file}')
+#         result = filecmp.cmp(file_name, result_file)
+#         if result == 0:
+#             print('both file matched')
+#         else:
+#             print('both file mismatched')
+#     elif operation == 2:
+#         print('deletion is not implemented yet')
+#     elif operation == 3:
+#         break
+#     elif operation == 4:
+#         btree.clear()
+#     else:
+#         print(f'Invalid Command')
+
+
+
