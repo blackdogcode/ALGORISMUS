@@ -27,6 +27,9 @@ class TreeNode:
     def has_extra_keys(self):
         return len(self.keys) >= math.ceil(TreeNode.max_degree / 2)
 
+    def print_node(self):
+        print(self.keys)
+
 
 class BTree:
     def __init__(self):
@@ -132,11 +135,38 @@ class BTree:
                 return
             else:
                 pass
+        # node is internal node
         else:
-            pass
+            successor_node = self.find_successor(node, node.keys[idx])
+            predecessor_node = self.find_predecessor(node, node.keys[idx])
+            predecessor_node.print_node()
+            successor_node.print_node()
+            node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
+            if successor_node.has_extra_keys():
+                successor_node.keys.pop(0)
+                successor_node.children.pop(0)
+            else:
+                pass
 
+    @staticmethod
+    def find_successor(node: TreeNode, key) -> TreeNode:
+        idx = node.keys.index(key)
+        y = None
+        x = node.children[idx + 1]
+        while x is not None:
+            y = x
+            x = x.children[0]
+        return y
 
-
+    @staticmethod
+    def find_predecessor(node: TreeNode, key) -> TreeNode:
+        idx = node.keys.index(key)
+        y = None
+        x = node.children[idx]
+        while x is not None:
+            y = x
+            x = x.children[-1]
+        return y
 
     def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
@@ -171,7 +201,7 @@ with open('delete_0.csv', mode='r') as delete_file:
         key, val = line
         btree.delete(key)
         i += 1
-        if i == 1:
+        if i == 2:
             break
 btree.preorder_traversal(btree.root)
 
