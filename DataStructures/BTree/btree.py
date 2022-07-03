@@ -30,6 +30,9 @@ class TreeNode:
     def print_node(self):
         print(self.keys)
 
+    def __str__(self):
+        return str(self.keys)
+
 
 class BTree:
     def __init__(self):
@@ -67,6 +70,8 @@ class BTree:
     def split(self, node: Optional[TreeNode]):
         if node is None:
             return
+        if None not in node.children:
+            node.leaf = False
         if len(node.keys) < TreeNode.max_degree:
             return
 
@@ -80,20 +85,28 @@ class BTree:
         node.keys = node.keys[:mid_point]
         new_node.values = node.values[mid_point + 1:]
         node.values = node.values[:mid_point]
+        new_node.parent = node.parent
 
         if None not in node.children:
             node.leaf = False
         if None not in new_node.children:
             new_node.leaf = False
 
+        if not node.leaf:
+            for i in range(len(node.keys) + 1):
+                node.children[i].parent = node
+        if not new_node.leaf:
+            for i in range(len(new_node.keys) + 1):
+                new_node.children[i].parent = new_node
+
         if node == self.root:
             new_root = TreeNode()
             new_root.add_key(median_key, median_val)
             new_root.children = [node, new_node]
+            node.parent, new_node.parent = new_root, new_root
             new_root.leaf = False
             self.root = new_root
         else:
-            new_node.parent = node.parent
             parent_node: TreeNode = node.parent
             parent_node.add_key(median_key, median_val)
             idx = parent_node.keys.index(median_key)
@@ -112,7 +125,6 @@ class BTree:
         elif node.leaf is True:
             return None, None
         else:
-            node.children[idx].parent = node
             return self.search(node.children[idx], key)
 
     def delete(self, key):
@@ -139,8 +151,11 @@ class BTree:
         else:
             successor_node = self.find_successor(node, node.keys[idx])
             predecessor_node = self.find_predecessor(node, node.keys[idx])
+            # --- temp ---
             predecessor_node.print_node()
             successor_node.print_node()
+            print(f'{successor_node}')
+            # --- temp ---
             node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
             if successor_node.has_extra_keys():
                 successor_node.keys.pop(0)
@@ -176,6 +191,14 @@ class BTree:
             self.preorder_traversal(node.children[i])
         self.preorder_traversal(node.children[-1])
 
+    def preorder_parent_traversal(self, node: Optional[TreeNode]):
+        if node is None:
+            return
+        for i in range(len(node.keys)):
+            print(f'{node.keys[i]} - {node.parent}')
+            self.preorder_parent_traversal(node.children[i])
+        self.preorder_parent_traversal(node.children[-1])
+
     def clear(self):
         self.root = None
 
@@ -204,6 +227,8 @@ with open('delete_0.csv', mode='r') as delete_file:
         if i == 2:
             break
 btree.preorder_traversal(btree.root)
+print()
+btree.preorder_parent_traversal(btree.root)
 
 # btree = BTree()
 # while True:
