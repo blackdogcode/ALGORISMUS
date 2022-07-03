@@ -24,8 +24,8 @@ class TreeNode:
         idx = self.keys.index(key)
         self.values.insert(idx, value)
 
-    def has_extra_keys(self):
-        return len(self.keys) >= math.ceil(TreeNode.max_degree / 2)
+    def has_least_keys(self):
+        return len(self.keys) >= math.ceil(TreeNode.max_degree / 2) - 1
 
     def __str__(self):
         return str(self.keys)
@@ -131,21 +131,28 @@ class BTree:
             return None
 
         if node.leaf:
-            if node == self.root:
-                node.keys.remove(node.keys[idx])
-                node.children.pop()
-                # node.keys = node.keys[:idx] + node.keys[idx + 1:]
-                # node.children = node.children[:idx] + node.children[idx + 1]
-                if len(node.keys) == 0:
-                    self.root = None
-                return
-            if node.has_extra_keys():
-                node.keys.remove(node.keys[idx])
-                node.children.pop()
-                return
-            else:
-                left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[idx])
-                print(left_immediate_node)
+            node.keys.remove(node.keys[idx])
+            node.children.pop()
+            if node == self.root and len(node.keys) == 0:
+                self.root = None
+            self.make_valid_btree(node)
+            # if node == self.root:
+            #     node.keys.remove(node.keys[idx])
+            #     node.children.pop()
+            #     # node.keys = node.keys[:idx] + node.keys[idx + 1:]
+            #     # node.children = node.children[:idx] + node.children[idx + 1]
+            #     if len(node.keys) == 0:
+            #         self.root = None
+            #     return
+            # if node.has_extra_keys():
+            #     node.keys.remove(node.keys[idx])
+            #     node.children.pop()
+            #     return
+            # else:
+            #     left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[idx])
+            #     right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[idx])
+            #     print(f'left sibling of {node} is {left_immediate_node}')
+            #     print(f'right sibling of {node} is {right_immediate_node}')
         # node is internal node
         else:
             successor_node = self.find_successor(node, node.keys[idx])
@@ -155,11 +162,17 @@ class BTree:
             print(f'Predecessor of {node} -> {predecessor_node}')
             # --- temp ---
             node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
-            if successor_node.has_extra_keys():
-                successor_node.keys.pop(0)
-                successor_node.children.pop(0)
-            else:
-                pass
+            successor_node.keys.pop(0)
+            successor_node.children.pop(0)
+            self.make_valid_btree(successor_node)
+
+    def make_valid_btree(self, node: TreeNode):
+        if node.has_least_keys():
+            return
+        left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[0])
+        right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[0])
+        print(f'left sibling of {node} is {left_immediate_node}')
+        print(f'right sibling of {node} is {right_immediate_node}')
 
     @staticmethod
     def find_successor(node: TreeNode, key) -> TreeNode:
@@ -194,7 +207,14 @@ class BTree:
 
     @staticmethod
     def find_immediate_right_sibling_node(node: TreeNode, key) -> TreeNode:
-        pass
+        parent_node: TreeNode = node.parent
+        i = 0
+        while i < len(parent_node.keys) and key > parent_node.keys[i]:
+            i += 1
+        if i == len(parent_node.keys):
+            return None
+        else:
+            return parent_node.children[i + 1]
 
     def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
