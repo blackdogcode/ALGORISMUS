@@ -27,9 +27,6 @@ class TreeNode:
     def has_extra_keys(self):
         return len(self.keys) >= math.ceil(TreeNode.max_degree / 2)
 
-    def print_node(self):
-        print(self.keys)
-
     def __str__(self):
         return str(self.keys)
 
@@ -128,6 +125,7 @@ class BTree:
             return self.search(node.children[idx], key)
 
     def delete(self, key):
+        # key == node.keys[idx]
         node, idx = self.search(self.root, key)
         if node is None:  # There is no key in tree
             return None
@@ -146,15 +144,15 @@ class BTree:
                 node.children.pop()
                 return
             else:
-                pass
+                left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[idx])
+                print(left_immediate_node)
         # node is internal node
         else:
             successor_node = self.find_successor(node, node.keys[idx])
             predecessor_node = self.find_predecessor(node, node.keys[idx])
             # --- temp ---
-            predecessor_node.print_node()
-            successor_node.print_node()
-            print(f'{successor_node}')
+            print(f'Successor of {node} -> {successor_node}')
+            print(f'Predecessor of {node} -> {predecessor_node}')
             # --- temp ---
             node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
             if successor_node.has_extra_keys():
@@ -182,6 +180,21 @@ class BTree:
             y = x
             x = x.children[-1]
         return y
+
+    @staticmethod
+    def find_immediate_left_sibling_node(node: TreeNode, key) -> TreeNode:
+        parent_node: TreeNode = node.parent
+        i = 0
+        while i < len(parent_node.keys) and key > parent_node.keys[i]:
+            i += 1
+        if i == 0:
+            return None
+        else:
+            return parent_node.children[i - 1]
+
+    @staticmethod
+    def find_immediate_right_sibling_node(node: TreeNode, key) -> TreeNode:
+        pass
 
     def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
@@ -224,11 +237,11 @@ with open('delete_0.csv', mode='r') as delete_file:
         key, val = line
         btree.delete(key)
         i += 1
-        if i == 2:
+        if i == 3:
             break
 btree.preorder_traversal(btree.root)
 print()
-btree.preorder_parent_traversal(btree.root)
+# btree.preorder_parent_traversal(btree.root)
 
 # btree = BTree()
 # while True:
