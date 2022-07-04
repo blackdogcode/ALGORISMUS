@@ -160,6 +160,7 @@ class BTree:
             node.children.pop()
             if node == self.root and len(node.keys) == 0:
                 self.root = None
+                return
             self.make_valid_btree(node)
         # case 1: internal node
         else:
@@ -173,6 +174,7 @@ class BTree:
     def make_valid_btree(self, node: TreeNode):
         if node.has_least_keys() or node.has_extra_keys():
             return
+        print(node)
         left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[0])
         right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[0])
         # print(f'left sibling of {node} is {left_immediate_node}')
@@ -180,7 +182,7 @@ class BTree:
 
         if left_immediate_node is not None and left_immediate_node.has_extra_keys():
             print(f'{node} left - {left_immediate_node} has extra keys')
-            self.borrow_key_from_left_sibling()
+            self.borrow_key_from_left_sibling(node, left_immediate_node)
         elif right_immediate_node is not None and right_immediate_node.has_extra_keys():
             print(f'{node} right - {right_immediate_node} has extra keys')
             self.borrow_key_from_right_sibling(node, right_immediate_node)
@@ -197,8 +199,8 @@ class BTree:
         i = 0
         while i < len(parent.keys) and key > parent.keys[i]:
             i += 1
-        new_key, new_val = parent.keys[i], parent.values[i]
-        parent.keys[i], parent.values[i] = left_sibling.keys[-1], left_sibling.values[-1]
+        new_key, new_val = parent.keys[i - 1], parent.values[i - 1]
+        parent.keys[i - 1], parent.values[i - 1] = left_sibling.keys[-1], left_sibling.values[-1]
         new_child = left_sibling.pop_right_child()
         node.append_left(new_key, new_val, new_child)
 
@@ -229,9 +231,13 @@ class BTree:
         parent.children = parent.children[:parent_key_idx] + parent.children[parent_key_idx + 1:]
 
         # insert parent key in merge node
-        node.keys = left_sibling.keys + list(parent_key) + node.keys
-        node.values = left_sibling.values + list(parent_val) + node.values
+        node.keys = left_sibling.keys + [parent_key] + node.keys
+        node.values = left_sibling.values + [parent_val] + node.values
         node.children = left_sibling.children + node.children
+        if None in node.children:
+            node.leaf = True
+        else:
+            node.leaf = False
 
         if parent == self.root:
             if len(parent.keys) == 0:
@@ -255,9 +261,13 @@ class BTree:
         parent.children = parent.children[:parent_key_idx] + parent.children[parent_key_idx + 1:]
 
         # insert parent key in merge node
-        right_sibling.keys = node.keys + list(parent_key) + right_sibling.keys
-        right_sibling.values = node.values + list(parent_val) + right_sibling.values
+        right_sibling.keys = node.keys + [parent_key] + right_sibling.keys
+        right_sibling.values = node.values + [parent_val] + right_sibling.values
         right_sibling.children = node.children + right_sibling.children
+        if None in right_sibling.children:
+            right_sibling.leaf = True
+        else:
+            right_sibling.leaf = False
 
         if parent == self.root:
             if len(parent.keys) == 0:
@@ -327,32 +337,71 @@ class BTree:
         self.root = None
 
 
-# Testing and Debugging
+# Test 0
 btree = BTree()
-with open('input_0.csv', mode='r') as insert_file:
-    csvFile = csv.reader(insert_file, delimiter='\t')
+print('inserting...')
+with open('input_1.csv', mode='r') as insert_file:
+    csv_insert_file = csv.reader(insert_file, delimiter='\t')
     i = 0
-    for line in csvFile:
+    for line in csv_insert_file:
         key, val = line
         btree.insert(key, val)
         i += 1
-        if i == 20:
-            break
-btree.preorder_traversal(btree.root)
-print()
+        # if i == 20:
+        #     break
+print('inserting completed')
 
-with open('delete_0.csv', mode='r') as delete_file:
-    csvFile = csv.reader(delete_file, delimiter='\t')
+print('deleting...')
+with open('delete_1.csv', mode='r') as delete_file:
+    csv_delete_file = csv.reader(delete_file, delimiter='\t')
     i = 0
-    for line in csvFile:
+    for line in csv_delete_file:
         key, val = line
         btree.delete(key)
         i += 1
-        if i == 4:
-            break
-btree.preorder_traversal(btree.root)
-print()
-# btree.preorder_parent_traversal(btree.root)
+        # if i == 10:
+        #     break
+print('deleting completed')
+
+
+
+
+
+
+
+
+# Testing and Debugging
+# btree = BTree()
+# with open('input_0.csv', mode='r') as insert_file:
+#     csvFile = csv.reader(insert_file, delimiter='\t')
+#     i = 0
+#     for line in csvFile:
+#         key, val = line
+#         btree.insert(key, val)
+#         i += 1
+#         if i == 20:
+#             break
+# btree.preorder_traversal(btree.root)
+# print()
+#
+# with open('delete_0.csv', mode='r') as delete_file:
+#     csvFile = csv.reader(delete_file, delimiter='\t')
+#     i = 0
+#     for line in csvFile:
+#         key, val = line
+#         btree.delete(key)
+#         i += 1
+#         if i == 4:
+#             break
+# btree.preorder_traversal(btree.root)
+# print()
+
+
+
+
+
+
+
 
 # btree = BTree()
 # while True:
