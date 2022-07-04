@@ -29,7 +29,7 @@ class TreeNode:
         self.values.append(value)
         self.children.append(child)
 
-    def pop_left(self):
+    def pop_left_children(self):
         self.keys.pop(0)
         self.values.pop(0)
         return self.children.pop(0)
@@ -171,8 +171,8 @@ class BTree:
             successor_node = self.find_successor(node, node.keys[idx])
             predecessor_node = self.find_predecessor(node, node.keys[idx])
             # --- temp ---
-            print(f'Successor of {node} -> {successor_node}')
-            print(f'Predecessor of {node} -> {predecessor_node}')
+            # print(f'Successor of {node} -> {successor_node}')
+            # print(f'Predecessor of {node} -> {predecessor_node}')
             # --- temp ---
             node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
             successor_node.keys.pop(0)
@@ -184,20 +184,21 @@ class BTree:
             return
         left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[0])
         right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[0])
-        print(f'left sibling of {node} is {left_immediate_node}')
-        print(f'right sibling of {node} is {right_immediate_node}')
+        # print(f'left sibling of {node} is {left_immediate_node}')
+        # print(f'right sibling of {node} is {right_immediate_node}')
 
         if left_immediate_node is not None and left_immediate_node.has_extra_keys():
-            print(f'left - {left_immediate_node} has extra keys')
+            print(f'{node} left - {left_immediate_node} has extra keys')
             self.borrow_key_from_left_sibling()
         elif right_immediate_node is not None and right_immediate_node.has_extra_keys():
-            print(f'right - {right_immediate_node} has extra keys')
+            print(f'{node} right - {right_immediate_node} has extra keys')
             self.borrow_key_from_right_sibling(node, right_immediate_node)
         else:
+            print(f'{node} merge should be needed')
             if left_immediate_node is not None:
-                self.merge_with_left_sibling()
+                self.merge_with_left_sibling(node, left_immediate_node)
             else:
-                self.merge_with_right_sibling()
+                self.merge_with_right_sibling(node, right_immediate_node)
 
     def borrow_key_from_left_sibling(self):
         pass
@@ -210,14 +211,52 @@ class BTree:
             i += 1
         new_key, new_val = parent.keys[i], parent.values[i]
         parent.keys[i], parent.values[i] = right_sibling.keys[0], right_sibling.values[0]
-        new_child = right_sibling.pop_left()
+        new_child = right_sibling.pop_left_children()
         node.append(new_key, new_val, new_child)
 
     def merge_with_left_sibling(self, node: TreeNode, left_sibling: TreeNode):
-        pass
+        key = node.keys[0]
+        parent: TreeNode = node.parent
+        i = 0
+        while i < len(parent.keys) and key > parent.keys[i]:
+            i += 1
+        parent_key = parent.keys[i - 1]
+        parent_val = parent.values[i - 1]
+
+        # remove parent key in parent node
+        parent_key_idx = parent.keys.index(parent_key)
+        parent.keys = parent.keys[:parent_key_idx] + parent.keys[parent_key_idx + 1:]
+        parent.values = parent.values[:parent_key_idx] + parent.values[parent_key_idx + 1:]
+        parent.children = parent.children[:parent_key_idx] + parent.children[parent_key_idx + 1:]
+
+        # insert parent key in merge node
+        node.keys = left_sibling.keys + list(parent_key) + node.keys
+        node.values = left_sibling.values + list(parent_val) + node.values
+        node.children = left_sibling.children + node.children
+
+        self.make_valid_btree(parent)
 
     def merge_with_right_sibling(self, node: TreeNode, right_sibling: TreeNode):
-        pass
+        key = right_sibling.keys[0]
+        parent: TreeNode = node.parent
+        i = 0
+        while i < len(parent.keys) and key > parent.keys[i]:
+            i += 1
+        parent_key = parent.keys[i - 1]
+        parent_val = parent.values[i - 1]
+
+        # remove parent key in parent node
+        parent_key_idx = parent.keys.index(parent_key)
+        parent.keys = parent.keys[:parent_key_idx] + parent.keys[parent_key_idx + 1:]
+        parent.values = parent.values[:parent_key_idx] + parent.values[parent_key_idx + 1:]
+        parent.children = parent.children[:parent_key_idx] + parent.children[parent_key_idx + 1:]
+
+        # insert parent key in merge node
+        right_sibling.keys = node.keys + list(parent_key) + right_sibling.keys
+        right_sibling.values = node.values + list(parent_val) + right_sibling.values
+        right_sibling.children = node.children + right_sibling.children
+
+        self.make_valid_btree(parent)
 
     @staticmethod
     def find_successor(node: TreeNode, key) -> TreeNode:
@@ -302,7 +341,7 @@ with open('delete_0.csv', mode='r') as delete_file:
         key, val = line
         btree.delete(key)
         i += 1
-        if i == 3:
+        if i == 4:
             break
 btree.preorder_traversal(btree.root)
 print()
