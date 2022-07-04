@@ -24,6 +24,16 @@ class TreeNode:
         idx = self.keys.index(key)
         self.values.insert(idx, value)
 
+    def append(self, key, value, child):
+        self.keys.append(key)
+        self.values.append(value)
+        self.children.append(child)
+
+    def pop_left(self):
+        self.keys.pop(0)
+        self.values.pop(0)
+        return self.children.pop(0)
+
     def has_least_keys(self):
         return len(self.keys) == math.ceil(TreeNode.max_degree / 2) - 1
 
@@ -176,6 +186,39 @@ class BTree:
         right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[0])
         print(f'left sibling of {node} is {left_immediate_node}')
         print(f'right sibling of {node} is {right_immediate_node}')
+
+        if left_immediate_node is not None and left_immediate_node.has_extra_keys():
+            print(f'left - {left_immediate_node} has extra keys')
+            self.borrow_key_from_left_sibling()
+        elif right_immediate_node is not None and right_immediate_node.has_extra_keys():
+            print(f'right - {right_immediate_node} has extra keys')
+            self.borrow_key_from_right_sibling(node, right_immediate_node)
+        else:
+            if left_immediate_node is not None:
+                self.merge_with_left_sibling()
+            else:
+                self.merge_with_right_sibling()
+
+    def borrow_key_from_left_sibling(self):
+        pass
+
+    def borrow_key_from_right_sibling(self, node: TreeNode, right_sibling: TreeNode):
+        key = node.keys[-1]
+        parent: TreeNode = node.parent
+        i = 0
+        while i < len(parent.keys) and key > parent.keys[i]:
+            i += 1
+        new_key, new_val = parent.keys[i], parent.values[i]
+        parent.keys[i], parent.values[i] = right_sibling.keys[0], right_sibling.values[0]
+        new_child = right_sibling.pop_left()
+        node.append(new_key, new_val, new_child)
+        pass
+
+    def merge_with_left_sibling(self, node: TreeNode, left_sibling: TreeNode):
+        pass
+
+    def merge_with_right_sibling(self, node: TreeNode, right_sibling: TreeNode):
+        pass
 
     @staticmethod
     def find_successor(node: TreeNode, key) -> TreeNode:
