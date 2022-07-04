@@ -24,15 +24,25 @@ class TreeNode:
         idx = self.keys.index(key)
         self.values.insert(idx, value)
 
-    def append(self, key, value, child):
+    def append_left(self, key, value, child):
+        self.keys.insert(0, key)
+        self.values.insert(0, value)
+        self.children.insert(0, child)
+
+    def append_right(self, key, value, child):
         self.keys.append(key)
         self.values.append(value)
         self.children.append(child)
 
-    def pop_left_children(self):
+    def pop_left_child(self):
         self.keys.pop(0)
         self.values.pop(0)
         return self.children.pop(0)
+
+    def pop_right_child(self):
+        self.keys.pop()
+        self.values.pop()
+        return self.children.pop()
 
     def has_least_keys(self):
         return len(self.keys) == math.ceil(TreeNode.max_degree / 2) - 1
@@ -143,37 +153,18 @@ class BTree:
         if node is None:  # There is no key in tree
             return None
 
+        # case 0: leaf node
         if node.leaf:
-            node.keys.remove(node.keys[idx])
+            node.keys.pop(idx)
+            node.values.pop(idx)
             node.children.pop()
             if node == self.root and len(node.keys) == 0:
                 self.root = None
             self.make_valid_btree(node)
-            # if node == self.root:
-            #     node.keys.remove(node.keys[idx])
-            #     node.children.pop()
-            #     # node.keys = node.keys[:idx] + node.keys[idx + 1:]
-            #     # node.children = node.children[:idx] + node.children[idx + 1]
-            #     if len(node.keys) == 0:
-            #         self.root = None
-            #     return
-            # if node.has_extra_keys():
-            #     node.keys.remove(node.keys[idx])
-            #     node.children.pop()
-            #     return
-            # else:
-            #     left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[idx])
-            #     right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[idx])
-            #     print(f'left sibling of {node} is {left_immediate_node}')
-            #     print(f'right sibling of {node} is {right_immediate_node}')
-        # node is internal node
+        # case 1: internal node
         else:
             successor_node = self.find_successor(node, node.keys[idx])
-            predecessor_node = self.find_predecessor(node, node.keys[idx])
-            # --- temp ---
-            # print(f'Successor of {node} -> {successor_node}')
-            # print(f'Predecessor of {node} -> {predecessor_node}')
-            # --- temp ---
+            # predecessor_node = self.find_predecessor(node, node.keys[idx])
             node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
             successor_node.keys.pop(0)
             successor_node.children.pop(0)
@@ -200,8 +191,16 @@ class BTree:
             else:
                 self.merge_with_right_sibling(node, right_immediate_node)
 
-    def borrow_key_from_left_sibling(self):
-        pass
+    def borrow_key_from_left_sibling(self, node: TreeNode, left_sibling: TreeNode):
+        key = node.keys[0]
+        parent: TreeNode = node.parent
+        i = 0
+        while i < len(parent.keys) and key > parent.keys[i]:
+            i += 1
+        new_key, new_val = parent.keys[i], parent.values[i]
+        parent.keys[i], parent.values[i] = left_sibling.keys[-1], left_sibling.values[-1]
+        new_child = left_sibling.pop_right_child()
+        node.append_left(new_key, new_val, new_child)
 
     def borrow_key_from_right_sibling(self, node: TreeNode, right_sibling: TreeNode):
         key = node.keys[-1]
@@ -211,8 +210,8 @@ class BTree:
             i += 1
         new_key, new_val = parent.keys[i], parent.values[i]
         parent.keys[i], parent.values[i] = right_sibling.keys[0], right_sibling.values[0]
-        new_child = right_sibling.pop_left_children()
-        node.append(new_key, new_val, new_child)
+        new_child = right_sibling.pop_left_child()
+        node.append_right(new_key, new_val, new_child)
 
     def merge_with_left_sibling(self, node: TreeNode, left_sibling: TreeNode):
         key = node.keys[0]
@@ -234,6 +233,10 @@ class BTree:
         node.values = left_sibling.values + list(parent_val) + node.values
         node.children = left_sibling.children + node.children
 
+        if parent == self.root:
+            if len(parent.keys) == 0:
+                self.root = node
+            return
         self.make_valid_btree(parent)
 
     def merge_with_right_sibling(self, node: TreeNode, right_sibling: TreeNode):
@@ -256,6 +259,10 @@ class BTree:
         right_sibling.values = node.values + list(parent_val) + right_sibling.values
         right_sibling.children = node.children + right_sibling.children
 
+        if parent == self.root:
+            if len(parent.keys) == 0:
+                self.root = right_sibling
+            return
         self.make_valid_btree(parent)
 
     @staticmethod
