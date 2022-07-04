@@ -25,7 +25,10 @@ class TreeNode:
         self.values.insert(idx, value)
 
     def has_least_keys(self):
-        return len(self.keys) >= math.ceil(TreeNode.max_degree / 2) - 1
+        return len(self.keys) == math.ceil(TreeNode.max_degree / 2) - 1
+
+    def has_extra_keys(self):
+        return len(self.keys) > math.ceil(TreeNode.max_degree / 2) - 1
 
     def __str__(self):
         return str(self.keys)
@@ -167,7 +170,7 @@ class BTree:
             self.make_valid_btree(successor_node)
 
     def make_valid_btree(self, node: TreeNode):
-        if node.has_least_keys():
+        if node.has_least_keys() or node.has_extra_keys():
             return
         left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[0])
         right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[0])
