@@ -50,6 +50,9 @@ class TreeNode:
     def has_extra_keys(self):
         return len(self.keys) > math.ceil(TreeNode.max_degree / 2) - 1
 
+    def has_less_keys(self):
+        return len(self.keys) < math.ceil(TreeNode.max_degree / 2) - 1
+
     def __str__(self):
         return str(self.keys)
 
@@ -160,18 +163,20 @@ class BTree:
             node.children.pop()
             if node == self.root and len(node.keys) == 0:
                 self.root = None
-                return
             self.make_valid_btree(node)
         # case 1: internal node
         else:
             successor_node = self.find_successor(node, node.keys[idx])
             # predecessor_node = self.find_predecessor(node, node.keys[idx])
             node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
+            node.values[idx], successor_node.values[0] = successor_node.values[0], node.values[idx]
             successor_node.keys.pop(0)
             successor_node.children.pop(0)
             self.make_valid_btree(successor_node)
 
     def make_valid_btree(self, node: TreeNode):
+        if node is None:
+            return
         if node.has_least_keys() or node.has_extra_keys():
             return
         print(node)
@@ -234,6 +239,7 @@ class BTree:
         node.keys = left_sibling.keys + [parent_key] + node.keys
         node.values = left_sibling.values + [parent_val] + node.values
         node.children = left_sibling.children + node.children
+
         if None in node.children:
             node.leaf = True
         else:
@@ -242,7 +248,9 @@ class BTree:
         if parent == self.root:
             if len(parent.keys) == 0:
                 self.root = node
+                node.parent = None
             return
+
         self.make_valid_btree(parent)
 
     def merge_with_right_sibling(self, node: TreeNode, right_sibling: TreeNode):
@@ -264,6 +272,7 @@ class BTree:
         right_sibling.keys = node.keys + [parent_key] + right_sibling.keys
         right_sibling.values = node.values + [parent_val] + right_sibling.values
         right_sibling.children = node.children + right_sibling.children
+
         if None in right_sibling.children:
             right_sibling.leaf = True
         else:
@@ -272,6 +281,7 @@ class BTree:
         if parent == self.root:
             if len(parent.keys) == 0:
                 self.root = right_sibling
+                right_sibling.parent = None
             return
         self.make_valid_btree(parent)
 
@@ -340,7 +350,7 @@ class BTree:
 # Test 0
 btree = BTree()
 print('inserting...')
-with open('input_1.csv', mode='r') as insert_file:
+with open('input_2.csv', mode='r') as insert_file:
     csv_insert_file = csv.reader(insert_file, delimiter='\t')
     i = 0
     for line in csv_insert_file:
@@ -352,12 +362,13 @@ with open('input_1.csv', mode='r') as insert_file:
 print('inserting completed')
 
 print('deleting...')
-with open('delete_1.csv', mode='r') as delete_file:
+with open('delete_2.csv', mode='r') as delete_file:
     csv_delete_file = csv.reader(delete_file, delimiter='\t')
     i = 0
     for line in csv_delete_file:
         key, val = line
         btree.delete(key)
+        print(f'delete {key}')
         i += 1
         # if i == 10:
         #     break
