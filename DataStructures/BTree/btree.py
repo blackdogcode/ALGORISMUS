@@ -212,7 +212,6 @@ class BTree:
         parent.keys[i], parent.values[i] = right_sibling.keys[0], right_sibling.values[0]
         new_child = right_sibling.pop_left()
         node.append(new_key, new_val, new_child)
-        pass
 
     def merge_with_left_sibling(self, node: TreeNode, left_sibling: TreeNode):
         pass
