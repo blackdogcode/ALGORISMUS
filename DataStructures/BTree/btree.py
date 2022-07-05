@@ -167,13 +167,21 @@ class BTree:
             self.make_valid_btree(node)
         # case 1: internal node
         else:
-            successor_node = self.find_successor(node, node.keys[idx])
-            # predecessor_node = self.find_predecessor(node, node.keys[idx])
-            node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
-            node.values[idx], successor_node.values[0] = successor_node.values[0], node.values[idx]
-            successor_node.keys.pop(0)
-            successor_node.children.pop(0)
-            self.make_valid_btree(successor_node)
+            # successor_node = self.find_successor(node, node.keys[idx])
+            # node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
+            # node.values[idx], successor_node.values[0] = successor_node.values[0], node.values[idx]
+            # successor_node.keys.pop(0)
+            # successor.node.values.pop(0)
+            # successor_node.children.pop(0)
+            # self.make_valid_btree(successor_node)
+
+            predecessor = self.find_predecessor(node, node.keys[idx])
+            node.keys[idx], predecessor.keys[-1] = predecessor.keys[-1], node.keys[idx]
+            node.values[idx], predecessor.values[-1] = predecessor.values[-1], node.values[idx]
+            predecessor.keys.pop()
+            predecessor.values.pop()
+            predecessor.children.pop()
+            self.make_valid_btree(predecessor)
 
     def make_valid_btree(self, node: TreeNode):
         if node.has_least_keys() or node.has_extra_keys():
@@ -359,23 +367,27 @@ with open('input_2.csv', mode='r') as insert_file:
     csv_insert_file = csv.reader(insert_file, delimiter='\t')
     i = 0
     for line in csv_insert_file:
-        key, val = line
+        key, val = map(int, line)
         btree.insert(key, val)
         i += 1
-        # if i == 20:
+        # if i == 3:
         #     break
 print('inserting completed')
+# btree.preorder_traversal(btree.root)
+print()
 
 print('deleting...')
 with open('delete_2.csv', mode='r') as delete_file:
     csv_delete_file = csv.reader(delete_file, delimiter='\t')
     i = 0
     for line in csv_delete_file:
-        key, val = line
-        btree.delete(key)
+        key, val = map(int, line)
         print(f'delete {key}')
+        btree.delete(key)
+        # btree.preorder_traversal(btree.root)
+        print()
         i += 1
-        # if i == 10:
+        # if i == 2:
         #     break
 print('deleting completed')
 
