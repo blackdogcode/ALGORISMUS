@@ -208,6 +208,8 @@ class BTree:
         parent.keys[i - 1], parent.values[i - 1] = left_sibling.keys[-1], left_sibling.values[-1]
         new_child = left_sibling.pop_right_child()
         node.append_left(new_key, new_val, new_child)
+        if new_child is not None:
+            new_child.parent = node
 
     @staticmethod
     def borrow_key_from_right_sibling(node: TreeNode, right_sibling: TreeNode):
@@ -220,6 +222,8 @@ class BTree:
         parent.keys[i], parent.values[i] = right_sibling.keys[0], right_sibling.values[0]
         new_child = right_sibling.pop_left_child()
         node.append_right(new_key, new_val, new_child)
+        if new_child is not None:
+            new_child.parent = node
 
     @staticmethod
     def find_immediate_left_sibling_node(node: TreeNode, key) -> TreeNode:
