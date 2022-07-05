@@ -163,6 +163,7 @@ class BTree:
             node.children.pop()
             if node == self.root and len(node.keys) == 0:
                 self.root = None
+                return
             self.make_valid_btree(node)
         # case 1: internal node
         else:
@@ -175,8 +176,6 @@ class BTree:
             self.make_valid_btree(successor_node)
 
     def make_valid_btree(self, node: TreeNode):
-        if node is None:
-            return
         if node.has_least_keys() or node.has_extra_keys():
             return
         print(node)
@@ -198,7 +197,8 @@ class BTree:
             else:
                 self.merge_with_right_sibling(node, right_immediate_node)
 
-    def borrow_key_from_left_sibling(self, node: TreeNode, left_sibling: TreeNode):
+    @staticmethod
+    def borrow_key_from_left_sibling(node: TreeNode, left_sibling: TreeNode):
         key = node.keys[0]
         parent: TreeNode = node.parent
         i = 0
@@ -209,7 +209,8 @@ class BTree:
         new_child = left_sibling.pop_right_child()
         node.append_left(new_key, new_val, new_child)
 
-    def borrow_key_from_right_sibling(self, node: TreeNode, right_sibling: TreeNode):
+    @staticmethod
+    def borrow_key_from_right_sibling(node: TreeNode, right_sibling: TreeNode):
         key = node.keys[-1]
         parent: TreeNode = node.parent
         i = 0
@@ -219,6 +220,28 @@ class BTree:
         parent.keys[i], parent.values[i] = right_sibling.keys[0], right_sibling.values[0]
         new_child = right_sibling.pop_left_child()
         node.append_right(new_key, new_val, new_child)
+
+    @staticmethod
+    def find_immediate_left_sibling_node(node: TreeNode, key) -> TreeNode:
+        parent_node: TreeNode = node.parent
+        i = 0
+        while i < len(parent_node.keys) and key > parent_node.keys[i]:
+            i += 1
+        if i == 0:
+            return None
+        else:
+            return parent_node.children[i - 1]
+
+    @staticmethod
+    def find_immediate_right_sibling_node(node: TreeNode, key) -> TreeNode:
+        parent: TreeNode = node.parent
+        i = 0
+        while i < len(parent.keys) and key > parent.keys[i]:
+            i += 1
+        if i == len(parent.keys):
+            return None
+        else:
+            return parent.children[i + 1]
 
     def merge_with_left_sibling(self, node: TreeNode, left_sibling: TreeNode):
         key = node.keys[0]
@@ -304,28 +327,6 @@ class BTree:
             y = x
             x = x.children[-1]
         return y
-
-    @staticmethod
-    def find_immediate_left_sibling_node(node: TreeNode, key) -> TreeNode:
-        parent_node: TreeNode = node.parent
-        i = 0
-        while i < len(parent_node.keys) and key > parent_node.keys[i]:
-            i += 1
-        if i == 0:
-            return None
-        else:
-            return parent_node.children[i - 1]
-
-    @staticmethod
-    def find_immediate_right_sibling_node(node: TreeNode, key) -> TreeNode:
-        parent_node: TreeNode = node.parent
-        i = 0
-        while i < len(parent_node.keys) and key > parent_node.keys[i]:
-            i += 1
-        if i == len(parent_node.keys):
-            return None
-        else:
-            return parent_node.children[i + 1]
 
     def preorder_traversal(self, node: Optional[TreeNode]):
         if node is None:
