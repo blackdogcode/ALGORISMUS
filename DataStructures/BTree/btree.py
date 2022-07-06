@@ -374,9 +374,9 @@ Select Command Number
 --> '''))
     if operation == 1:
         # insert
-        file_name = input('insert file name(e.g. input.csv): ')
-        with open(file_name, mode='r') as input_file:
-            csvFile = csv.reader(input_file, delimiter='\t')
+        insert_file_name = input('insert file name(e.g. input_1.csv): ')
+        with open(insert_file_name, mode='r') as insert_file:
+            csvFile = csv.reader(insert_file, delimiter='\t')
             print('inserting key-value pairs in b-tree...')
             for line in csvFile:
                 key, val = map(int, line)
@@ -384,7 +384,7 @@ Select Command Number
             print('inserting is completed')
         # search
         keys_vals = deque()
-        with open(file_name, mode='r') as search_file:
+        with open(insert_file_name, mode='r') as search_file:
             csvFile = csv.reader(search_file, delimiter='\t')
             print('searching...')
             for line in csvFile:
@@ -396,22 +396,62 @@ Select Command Number
                 keys_vals.append((key, ret_val))
             print('searching completed')
         # write
-        result_file = 'input_result.csv'
+        result_file_name = 'input_result.csv'
         print('writing result file')
-        with open(result_file, mode='w') as write_file:
+        with open(result_file_name, mode='w') as result_file:
             for key_val in keys_vals:
                 key, val = key_val
-                write_file.write(f'{key}\t{val}\r')
+                result_file.write(f'{key}\t{val}\r')
         print('writing completed')
         # compare
-        print(f'comparing {file_name} with {result_file}')
-        result = filecmp.cmp(file_name, result_file)
-        if result == 0:
+        print(f'comparing {insert_file_name} with {result_file_name}')
+        insert_compare_result = filecmp.cmp(insert_file_name, result_file_name)
+        if insert_compare_result == 0:
             print('both file matched')
         else:
             print('both file mismatched')
     elif operation == 2:
-        print('deletion is not implemented yet')
+        # delete
+        delete_file_name = input('delete file name(e.g. delete_1.csv): ')
+        delete_compare_file_name = input('delete compare file name(e.g. delete_compare_1.csv): ')
+        with open(delete_file_name, mode='r') as delete_file:
+            csvFile = csv.reader(delete_file, delimiter='\t')
+            print('deleting key-value pairs in b-tree...')
+            for line in csvFile:
+                key, val = map(int, line)
+                btree.delete(key)
+            print('deletion is completed')
+        # reading key-value paris from compare file name
+        compare_delete_keys = deque()
+        print(f'reading key-value pair from compare file {delete_compare_file_name}')
+        with open(delete_compare_file_name, mode='r') as delete_compare_file:
+            csv_compare_file = csv.reader(delete_compare_file, delimiter='\t')
+            for line in csv_compare_file:
+                key, val = line
+                key = int(key)
+                compare_delete_keys.append(key)
+        print('reading completed')
+        # writing result
+        delete_result_file_name = 'delete_result.csv'
+        print('writing delete result file')
+        with open(delete_result_file_name, mode='w') as delete_result_file:
+            for key in compare_delete_keys:
+                node, idx = btree.search(btree.root, key)
+                ret_val = 0
+                if node is None:
+                    ret_val = 'N/A'
+                else:
+                    ret_val = node.values[idx]
+                delete_result_file.write(f'{key}\t{ret_val}\r')
+        print('writing completed')
+        # comparing
+        print(f'comparing {delete_compare_file_name} with {delete_result_file_name}')
+        delete_compare_result = filecmp.cmp(delete_compare_file_name, delete_result_file_name)
+        if delete_compare_result == 0:
+            print('both file matched')
+        else:
+            print('both file mismatched')
+        pass
     elif operation == 3:
         break
     elif operation == 4:
