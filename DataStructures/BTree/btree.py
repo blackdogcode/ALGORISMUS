@@ -18,7 +18,7 @@ class TreeNode:
         self.leaf = True
         self.parent = None
 
-    def add_key(self, key, value):
+    def add_key_val(self, key, value):
         self.keys.append(key)
         self.keys.sort()
         idx = self.keys.index(key)
@@ -61,82 +61,6 @@ class BTree:
     def __init__(self):
         self.root: TreeNode = None
 
-    def insert(self, key, value):
-        if self.root is None:
-            self.root = TreeNode()
-            self.root.add_key(key, value)
-            self.root.children.extend([None, None])
-            self.root.parent = None
-            return
-
-        y = None
-        x = self.root
-        if x.leaf is True:
-            x.add_key(key, value)
-            x.children.append(None)
-            if len(x.keys) == TreeNode.max_degree:
-                self.split(x)
-        else:
-            while x.leaf is False:
-                y = x
-                i = 0
-                while i < len(x.keys) and key > x.keys[i]:
-                    i += 1
-                x.children[i].parent = x
-                x = x.children[i]
-            x.parent = y
-            x.add_key(key, value)
-            x.children.append(None)
-            if len(x.keys) == TreeNode.max_degree:
-                self.split(x)
-
-    def split(self, node: Optional[TreeNode]):
-        if node is None:
-            return
-        if None not in node.children:
-            node.leaf = False
-        if len(node.keys) < TreeNode.max_degree:
-            return
-
-        mid_point = len(node.keys) // 2
-        median_key = node.keys[mid_point]
-        median_val = node.values[mid_point]
-        new_node = TreeNode()
-        new_node.children = node.children[mid_point + 1:]
-        node.children = node.children[:mid_point + 1]
-        new_node.keys = node.keys[mid_point + 1:]
-        node.keys = node.keys[:mid_point]
-        new_node.values = node.values[mid_point + 1:]
-        node.values = node.values[:mid_point]
-        new_node.parent = node.parent
-
-        if None not in node.children:
-            node.leaf = False
-        if None not in new_node.children:
-            new_node.leaf = False
-
-        if not node.leaf:
-            for i in range(len(node.keys) + 1):
-                node.children[i].parent = node
-        if not new_node.leaf:
-            for i in range(len(new_node.keys) + 1):
-                new_node.children[i].parent = new_node
-
-        if node == self.root:
-            new_root = TreeNode()
-            new_root.add_key(median_key, median_val)
-            new_root.children = [node, new_node]
-            node.parent, new_node.parent = new_root, new_root
-            new_root.leaf = False
-            self.root = new_root
-        else:
-            parent_node: TreeNode = node.parent
-            parent_node.add_key(median_key, median_val)
-            idx = parent_node.keys.index(median_key)
-            parent_node.children.insert(idx + 1, None)
-            parent_node.children[idx + 1] = new_node
-            self.split(parent_node)
-
     def search(self, node: Optional[TreeNode], key) -> Tuple[TreeNode, int]:
         if node is None:
             return None, None
@@ -149,6 +73,82 @@ class BTree:
             return None, None
         else:
             return self.search(node.children[idx], key)
+
+    def insert(self, key, value):
+        if self.root is None:
+            self.root = TreeNode()
+            self.root.add_key_val(key, value)
+            self.root.children.extend([None, None])
+            self.root.parent = None
+            return
+
+        y = None
+        x = self.root
+        if x.leaf is True:
+            x.add_key_val(key, value)
+            x.children.append(None)
+            if len(x.keys) == TreeNode.max_degree:
+                self.split(x)
+        else:
+            while x.leaf is False:
+                y = x
+                i = 0
+                while i < len(x.keys) and key > x.keys[i]:
+                    i += 1
+                x.children[i].parent = x
+                x = x.children[i]
+            x.parent = y
+            x.add_key_val(key, value)
+            x.children.append(None)
+            if len(x.keys) == TreeNode.max_degree:
+                self.split(x)
+
+    def split(self, node: Optional[TreeNode]):
+        if node is None:
+            return
+        if None not in node.children:
+            node.leaf = False
+        if len(node.keys) < TreeNode.max_degree:
+            return
+
+        mid_index = len(node.keys) // 2
+        median_key = node.keys[mid_index]
+        median_val = node.values[mid_index]
+        new_node = TreeNode()
+        new_node.children = node.children[mid_index + 1:]
+        node.children = node.children[:mid_index + 1]
+        new_node.keys = node.keys[mid_index + 1:]
+        node.keys = node.keys[:mid_index]
+        new_node.values = node.values[mid_index + 1:]
+        node.values = node.values[:mid_index]
+        new_node.parent = node.parent
+
+        if None not in node.children:
+            node.leaf = False
+        if None not in new_node.children:
+            new_node.leaf = False
+
+        if not node.leaf:
+            for i in range(len(node.children)):
+                node.children[i].parent = node
+        if not new_node.leaf:
+            for i in range(len(new_node.children)):
+                new_node.children[i].parent = new_node
+
+        if node == self.root:
+            new_root = TreeNode()
+            new_root.add_key_val(median_key, median_val)
+            new_root.children = [node, new_node]
+            node.parent, new_node.parent = new_root, new_root
+            new_root.leaf = False
+            self.root = new_root
+        else:
+            parent_node: TreeNode = node.parent
+            parent_node.add_key_val(median_key, median_val)
+            idx = parent_node.keys.index(median_key)
+            parent_node.children.insert(idx + 1, None)
+            parent_node.children[idx + 1] = new_node
+            self.split(parent_node)
 
     def delete(self, key):
         node, idx = self.search(self.root, key)  # key is node.keys[idx]
@@ -166,14 +166,6 @@ class BTree:
             self.make_valid_btree(node)
         # case 1: internal node
         else:
-            # successor_node = self.find_successor(node, node.keys[idx])
-            # node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
-            # node.values[idx], successor_node.values[0] = successor_node.values[0], node.values[idx]
-            # successor_node.keys.pop(0)
-            # successor.node.values.pop(0)
-            # successor_node.children.pop(0)
-            # self.make_valid_btree(successor_node)
-
             predecessor = self.find_predecessor(node, node.keys[idx])
             node.keys[idx], predecessor.keys[-1] = predecessor.keys[-1], node.keys[idx]
             node.values[idx], predecessor.values[-1] = predecessor.values[-1], node.values[idx]
@@ -182,27 +174,30 @@ class BTree:
             predecessor.children.pop()
             self.make_valid_btree(predecessor)
 
+            # successor_node = self.find_successor(node, node.keys[idx])
+            # node.keys[idx], successor_node.keys[0] = successor_node.keys[0], node.keys[idx]
+            # node.values[idx], successor_node.values[0] = successor_node.values[0], node.values[idx]
+            # successor_node.keys.pop(0)
+            # successor.node.values.pop(0)
+            # successor_node.children.pop(0)
+            # self.make_valid_btree(successor_node)
+
     def make_valid_btree(self, node: TreeNode):
         if node.has_least_keys() or node.has_extra_keys():
             return
-        print(node)
-        left_immediate_node = self.find_immediate_left_sibling_node(node, node.keys[0])
-        right_immediate_node = self.find_immediate_right_sibling_node(node, node.keys[0])
-        # print(f'left sibling of {node} is {left_immediate_node}')
-        # print(f'right sibling of {node} is {right_immediate_node}')
 
-        if left_immediate_node is not None and left_immediate_node.has_extra_keys():
-            print(f'{node} left - {left_immediate_node} has extra keys')
-            self.borrow_key_from_left_sibling(node, left_immediate_node)
-        elif right_immediate_node is not None and right_immediate_node.has_extra_keys():
-            print(f'{node} right - {right_immediate_node} has extra keys')
-            self.borrow_key_from_right_sibling(node, right_immediate_node)
+        left_sibling_node = self.find_immediate_left_sibling_node(node, node.keys[0])
+        right_sibling_node = self.find_immediate_right_sibling_node(node, node.keys[0])
+
+        if left_sibling_node is not None and left_sibling_node.has_extra_keys():
+            self.borrow_key_from_left_sibling(node, left_sibling_node)
+        elif right_sibling_node is not None and right_sibling_node.has_extra_keys():
+            self.borrow_key_from_right_sibling(node, right_sibling_node)
         else:
-            print(f'{node} merge should be needed')
-            if left_immediate_node is not None:
-                self.merge_with_left_sibling(node, left_immediate_node)
+            if left_sibling_node is not None:
+                self.merge_with_left_sibling(node, left_sibling_node)
             else:
-                self.merge_with_right_sibling(node, right_immediate_node)
+                self.merge_with_right_sibling(node, right_sibling_node)
 
     @staticmethod
     def borrow_key_from_left_sibling(node: TreeNode, left_sibling: TreeNode):
@@ -367,7 +362,49 @@ class BTree:
         self.root = None
 
 
-# Test 0
+# insert test
+# btree = BTree()
+# file_name = 'input_1.csv'
+# with open(file_name, mode='r') as input_file:
+#     csvFile = csv.reader(input_file, delimiter='\t')
+#     print('inserting key-value pairs in b-tree...')
+#     for line in csvFile:
+#         key, val = map(int, line)
+#         btree.insert(key, val)
+#     print('inserting is completed')
+# # search
+# keys_vals = deque()
+# with open(file_name, mode='r') as search_file:
+#     csvFile = csv.reader(search_file, delimiter='\t')
+#     print('searching...')
+#     for line in csvFile:
+#         key, val = map(int, line)
+#         node, idx = btree.search(btree.root, key)
+#         ret_val = 'N/A'
+#         if node is not None:
+#             ret_val = node.values[idx]
+#         keys_vals.append((key, ret_val))
+#     print('searching completed')
+# # write
+# result_file = 'input_result.csv'
+# print('writing result file')
+# with open(result_file, mode='w') as write_file:
+#     for key_val in keys_vals:
+#         key, val = key_val
+#         write_file.write(f'{key}\t{val}\r')
+# print('writing completed')
+# # compare
+# print(f'comparing {file_name} with {result_file}')
+# result = filecmp.cmp(file_name, result_file)
+# if result == 0:
+#     print('both file matched')
+# else:
+#     print('both file mismatched')
+
+
+
+
+# delete test
 btree = BTree()
 print('inserting...')
 with open('input_2.csv', mode='r') as insert_file:
@@ -427,42 +464,6 @@ if result == 0:
     print('both file matched')
 else:
     print('both file mismatched')
-
-
-
-
-
-# Testing and Debugging
-# btree = BTree()
-# with open('input_0.csv', mode='r') as insert_file:
-#     csvFile = csv.reader(insert_file, delimiter='\t')
-#     i = 0
-#     for line in csvFile:
-#         key, val = line
-#         btree.insert(key, val)
-#         i += 1
-#         if i == 20:
-#             break
-# btree.preorder_traversal(btree.root)
-# print()
-#
-# with open('delete_0.csv', mode='r') as delete_file:
-#     csvFile = csv.reader(delete_file, delimiter='\t')
-#     i = 0
-#     for line in csvFile:
-#         key, val = line
-#         btree.delete(key)
-#         i += 1
-#         if i == 4:
-#             break
-# btree.preorder_traversal(btree.root)
-# print()
-
-
-
-
-
-
 
 
 # btree = BTree()
