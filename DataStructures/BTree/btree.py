@@ -9,7 +9,7 @@ from typing import Optional
 
 
 class TreeNode:
-    max_degree = 5
+    max_degree = 37
 
     def __init__(self):
         self.keys = []
