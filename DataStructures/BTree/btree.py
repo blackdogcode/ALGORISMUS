@@ -187,7 +187,7 @@ class BTree:
             return
 
         left_sibling_node = self.find_left_sibling_node(node, node.keys[0])
-        right_sibling_node = self.find_immediate_right_sibling_node(node, node.keys[0])
+        right_sibling_node = self.find_right_sibling_node(node, node.keys[0])
 
         if left_sibling_node is not None and left_sibling_node.has_extra_keys():
             self.borrow_key_from_left_sibling(node, left_sibling_node)
@@ -239,7 +239,7 @@ class BTree:
             return parent_node.children[i - 1]
 
     @staticmethod
-    def find_immediate_right_sibling_node(node: TreeNode, key) -> TreeNode:
+    def find_right_sibling_node(node: TreeNode, key) -> TreeNode:
         parent: TreeNode = node.parent
         i = 0
         while i < len(parent.keys) and key > parent.keys[i]:
