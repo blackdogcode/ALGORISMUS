@@ -151,8 +151,7 @@ class BTree:
             return self.search(node.children[idx], key)
 
     def delete(self, key):
-        # key == node.keys[idx]
-        node, idx = self.search(self.root, key)
+        node, idx = self.search(self.root, key)  # key is node.keys[idx]
         if node is None:  # There is no key in tree
             return None
 
@@ -275,6 +274,10 @@ class BTree:
         node.values = left_sibling.values + [parent_val] + node.values
         node.children = left_sibling.children + node.children
 
+        if None not in node.children:
+            for i in range(len(node.children)):
+                node.children[i].parent = node
+
         if None in node.children:
             node.leaf = True
         else:
@@ -307,6 +310,10 @@ class BTree:
         right_sibling.keys = node.keys + [parent_key] + right_sibling.keys
         right_sibling.values = node.values + [parent_val] + right_sibling.values
         right_sibling.children = node.children + right_sibling.children
+
+        if None not in right_sibling.children:
+            for i in range(len(right_sibling.children)):
+                right_sibling.children[i].parent = right_sibling
 
         if None in right_sibling.children:
             right_sibling.leaf = True
@@ -370,12 +377,12 @@ with open('input_2.csv', mode='r') as insert_file:
         key, val = map(int, line)
         btree.insert(key, val)
         i += 1
-        # if i == 3:
+        # if i == 100:
         #     break
 print('inserting completed')
 # btree.preorder_traversal(btree.root)
-print()
-
+# print()
+#
 print('deleting...')
 with open('delete_2.csv', mode='r') as delete_file:
     csv_delete_file = csv.reader(delete_file, delimiter='\t')
@@ -387,12 +394,39 @@ with open('delete_2.csv', mode='r') as delete_file:
         # btree.preorder_traversal(btree.root)
         print()
         i += 1
-        # if i == 2:
+        # if i == 100:
         #     break
 print('deleting completed')
 
+compare_file = 'delete_compare_2.csv'
+result_file = 'delete_result.csv'
+print('comparing...')
+compare_delete = deque()
+with open(compare_file, mode='r') as delete_compare_file:
+    csv_compare_file = csv.reader(delete_compare_file, delimiter='\t')
+    for line in csv_compare_file:
+        key, val = line
+        key = int(key)
+        compare_delete.append(key)
 
+print('writing result file')
+with open(result_file, mode='w') as delete_result_file:
+    for key in compare_delete:
+        node, idx = btree.search(btree.root, key)
+        ret_val = 0
+        if node is None:
+            ret_val = 'N/A'
+        else:
+            ret_val = node.values[idx]
+        delete_result_file.write(f'{key}\t{ret_val}\r')
+print('writing completed')
 
+print(f'comparing {compare_file} with {result_file}')
+result = filecmp.cmp(compare_file, result_file)
+if result == 0:
+    print('both file matched')
+else:
+    print('both file mismatched')
 
 
 
